@@ -1,0 +1,94 @@
+{
+  "book_title": "Claire & Gus en Colombie",
+  "book_subtitle": "Un carnet de voyage raconté à l'oral",
+  "authors": "Claire & Augustin",
+  "date_range": "Janvier 2024",
+  "cover_photo": "https://cdn.prod.website-files.com/68827087b5bebc3702bf1a54/69170578225ecab95acf4048_C%26G%20Cover.png",
+  "brand_name": "MemoBook",
+  "year": "2025",
+  "footer_tagline": "Racontez. Revivez. Partagez.",
+  "global_stats": {
+    "total_days": 21,
+    "countries": 1,
+    "cities": 6,
+    "km_total": 1250,
+    "km_walked": 120,
+    "flights": 2,
+    "trains": 3,
+    "hotels": 8,
+    "drinks": 54
+  },
+  "days": [
+    {
+      "title": "Jour 1 – Arrivée à Bogotá",
+      "date": "2024-01-03",
+      "city": "Bogotá",
+      "country": "Colombie",
+      "layout_hero_top": true,
+      "layout_split_left": false,
+      "layout_story_facts": false,
+      "layout_collage": false,
+      "body_html": "<p>Nous arrivons à Bogotá après un long vol de nuit. La première claque, c’est l’altitude : chaque marche semble un petit défi. On dépose les sacs, on se perd volontairement dans les rues colorées de La Candelaria, entre cafés, façades pastel et fresques gigantesques.</p><p>Le soir, on se pose enfin avec une arepa chaude et un café tinto. On réalise que le voyage commence vraiment ici.</p>",
+      "fun_facts": [
+        "Bogotá est perchée à 2 640 m d'altitude, ce qui en fait l’une des capitales les plus hautes du monde.",
+        "Le café tinto, petit café noir servi partout, est un vrai rituel du quotidien pour les Colombiens."
+      ],
+      "highlights": [
+        "Premier tinto sur une petite place animée",
+        "Street art de La Candelaria",
+        "La sensation d’être vraiment partis"
+      ],
+      "photos": [
+        "https://cdn.prod.website-files.com/68827087b5bebc3702bf1a54/69170578a2165b3c4e2e180a_Image%20placeholder%202.png",
+        "https://cdn.prod.website-files.com/68827087b5bebc3702bf1a54/69170578ce230d727dc3983e_Image%20placeholder%201.png"
+      ],
+      "sticker_1": "https://cdn.prod.website-files.com/68827087b5bebc3702bf1a54/69170578ce230d727dc3983e_Image%20placeholder%201.png"
+    },
+    {
+      "title": "Jour 2 – Monserrate et vues sur la ville",
+      "date": "2024-01-04",
+      "city": "Bogotá",
+      "country": "Colombie",
+      "layout_hero_top": false,
+      "layout_split_left": true,
+      "layout_story_facts": false,
+      "layout_collage": false,
+      "body_html": "<p>On se lève tôt pour monter à Monserrate. Le funiculaire grimpe dans la brume avant de dévoiler toute la ville sous nos pieds. Là-haut, l’air est plus frais, le temps suspendu, et on reste longtemps à regarder Bogotá s’étendre jusqu’aux montagnes.</p><p>En redescendant, on retrouve le bruit, les bus, les vendeurs de jus, mais avec l’impression de mieux comprendre la ville.</p>",
+      "fun_facts": [],
+      "highlights": [
+        "Montée en funiculaire vers Monserrate",
+        "Vue panoramique sur Bogotá"
+      ],
+      "photos": [
+        "https://cdn.prod.website-files.com/68827087b5bebc3702bf1a54/69170578ce230d727dc3983e_Image%20placeholder%201.png",
+        "https://cdn.prod.website-files.com/68827087b5bebc3702bf1a54/69170578a2165b3c4e2e180a_Image%20placeholder%202.png"
+      ],
+      "sticker_1": "https://cdn.prod.website-files.com/68827087b5bebc3702bf1a54/69170578a2165b3c4e2e180a_Image%20placeholder%202.png"
+    },
+    {
+      "title": "Jour 3 – Guatapé en couleurs",
+      "date": "2024-01-05",
+      "city": "Guatapé",
+      "country": "Colombie",
+      "layout_hero_top": false,
+      "layout_split_left": false,
+      "layout_story_facts": false,
+      "layout_collage": true,
+      "body_html": "<p>Guatapé ressemble à une boîte de crayons de couleur renversée : chaque maison affiche ses zócalos, ses motifs, ses histoires. On prend le temps de flâner, de s’arrêter pour un jus, de discuter avec les gens sur les bancs.</p><p>Plus tard, les marches de la Piedra del Peñol nous essoufflent, mais la vue sur le labyrinthe de lacs en contrebas vaut chaque goutte de sueur.</p>",
+      "fun_facts": [
+        "Les bas-reliefs (zócalos) sur les maisons de Guatapé racontent souvent la profession ou l’histoire de la famille.",
+        "Le grand réservoir autour de la Piedra del Peñol est artificiel et a englouti un ancien village."
+      ],
+      "highlights": [
+        "Les façades colorées de Guatapé",
+        "Vue depuis la Piedra del Peñol"
+      ],
+      "photos": [
+        "https://cdn.prod.website-files.com/68827087b5bebc3702bf1a54/69170578a2165b3c4e2e180a_Image%20placeholder%202.png",
+        "https://cdn.prod.website-files.com/68827087b5bebc3702bf1a54/69170578ce230d727dc3983e_Image%20placeholder%201.png"
+      ],
+      "sticker_1": "https://cdn.prod.website-files.com/68827087b5bebc3702bf1a54/69170578ce230d727dc3983e_Image%20placeholder%201.png",
+      "sticker_2": "https://cdn.prod.website-files.com/68827087b5bebc3702bf1a54/69170578a2165b3c4e2e180a_Image%20placeholder%202.png"
+    }
+  ]
+}
