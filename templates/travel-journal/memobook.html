@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>{{ book_title }}</title>
+</head>
+<body class="mbk-book">
+  <!-- ========== COUVERTURE ========== -->
+  <section class="mbk-cover">
+    <div class="mbk-cover-img">
+      <img src="{{ cover_photo }}" alt="Couverture" />
+    </div>
+
+    <div class="mbk-cover-content">
+      <!-- Haut de page : titre + sous-titre -->
+      <div class="mbk-cover-top">
+        <h1 class="mbk-cover-title">{{ book_title }}</h1>
+        {% if book_subtitle %}
+          <h2 class="mbk-cover-subtitle">{{ book_subtitle }}</h2>
+        {% endif %}
+      </div>
+
+      <!-- Bas de page : auteurs + dates -->
+      <div class="mbk-cover-bottom">
+        {% if authors %}
+          <p class="mbk-cover-authors">{{ authors }}</p>
+        {% endif %}
+        {% if date_range %}
+          <p class="mbk-cover-dates">{{ date_range }}</p>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats globales optionnelles -->
+  {% if global_stats %}
+    <section class="mbk-stats">
+      <h2 class="mbk-stats-title">Le voyage en un coup d’œil</h2>
+      <div class="mbk-stats-grid">
+        {% if global_stats.total_days %}
+          <div class="mbk-stat-item">
+            <div class="mbk-stat-value">{{ global_stats.total_days }}</div>
+            <div class="mbk-stat-label">Jours</div>
+          </div>
+        {% endif %}
+        {% if global_stats.countries %}
+          <div class="mbk-stat-item">
+            <div class="mbk-stat-value">{{ global_stats.countries }}</div>
+            <div class="mbk-stat-label">Pays visités</div>
+          </div>
+        {% endif %}
+        {% if global_stats.cities %}
+          <div class="mbk-stat-item">
+            <div class="mbk-stat-value">{{ global_stats.cities }}</div>
+            <div class="mbk-stat-label">Villes</div>
+          </div>
+        {% endif %}
+        {% if global_stats.km_total %}
+          <div class="mbk-stat-item">
+            <div class="mbk-stat-value">{{ global_stats.km_total }}</div>
+            <div class="mbk-stat-label">Kilomètres</div>
+          </div>
+        {% endif %}
+        {% if global_stats.km_walked %}
+          <div class="mbk-stat-item">
+            <div class="mbk-stat-value">{{ global_stats.km_walked }}</div>
+            <div class="mbk-stat-label">Km à pied</div>
+          </div>
+        {% endif %}
+        {% if global_stats.flights %}
+          <div class="mbk-stat-item">
+            <div class="mbk-stat-value">{{ global_stats.flights }}</div>
+            <div class="mbk-stat-label">Vols</div>
+          </div>
+        {% endif %}
+        {% if global_stats.trains %}
+          <div class="mbk-stat-item">
+            <div class="mbk-stat-value">{{ global_stats.trains }}</div>
+            <div class="mbk-stat-label">Trains</div>
+          </div>
+        {% endif %}
+        {% if global_stats.hotels %}
+          <div class="mbk-stat-item">
+            <div class="mbk-stat-value">{{ global_stats.hotels }}</div>
+            <div class="mbk-stat-label">Hébergements</div>
+          </div>
+        {% endif %}
+        {% if global_stats.drinks %}
+          <div class="mbk-stat-item">
+            <div class="mbk-stat-value">{{ global_stats.drinks }}</div>
+            <div class="mbk-stat-label">Boissons</div>
+          </div>
+        {% endif %}
+      </div>
+    </section>
+  {% endif %}
+
+  <!-- Saut de page après la couverture + stats -->
+  <div class="mbk-page-break"></div>
+
+  <!-- ========== PAGES JOUR PAR JOUR ========== -->
+  {% for day in days %}
+    <section class="mbk-day">
+      <!-- Stickers (0 à 2 max) -->
+      {% if day.sticker_1 %}
+        <img class="mbk-sticker mbk-sticker-1" src="{{ day.sticker_1 }}" alt="Sticker 1" />
+      {% endif %}
+      {% if day.sticker_2 %}
+        <img class="mbk-sticker mbk-sticker-2" src="{{ day.sticker_2 }}" alt="Sticker 2" />
+      {% endif %}
+
+      <!-- En-tête de jour -->
+      <div class="mbk-day-header">
+        <h2 class="mbk-day-title">{{ day.title }}</h2>
+        <div class="mbk-day-meta">
+          {% if day.date %}
+            <span class="mbk-day-meta-item">{{ day.date }}</span>
+          {% endif %}
+          {% if day.city %}
+            <span class="mbk-day-meta-item">
+              {{ day.city }}{% if day.country %}, {{ day.country }}{% endif %}
+            </span>
+          {% endif %}
+        </div>
+      </div>
+
+      <!-- Layout 1 : hero photo en haut + texte dessous -->
+      {% if day.layout_hero_top %}
+        <div class="mbk-layout mbk-layout-hero">
+          {% if day.photos and day.photos|length > 0 %}
+            <figure class="mbk-hero mbk-tilt-right">
+              <div class="mbk-img-wrap mbk-img-hero">
+                <img src="{{ day.photos[0] }}" alt="Photo principale" />
+              </div>
+              <span class="mbk-tape mbk-tape-left"></span>
+            </figure>
+          {% endif %}
+
+          <div class="mbk-text-block">
+            {{ day.body_html | safe }}
+          </div>
+        </div>
+      {% endif %}
+
+      <!-- Layout 2 : texte à gauche / mosaïque à droite -->
+      {% if day.layout_split_left %}
+        <div class="mbk-layout mbk-layout-split">
+          <div class="mbk-text-block">
+            {{ day.body_html | safe }}
+          </div>
+
+          {% if day.photos %}
+          <div class="mbk-gallery">
+            {% for photo in day.photos %}
+              <figure class="mbk-card {% if loop.index is odd %}mbk-tilt-left{% else %}mbk-tilt-right{% endif %}">
+                <div class="mbk-img-wrap mbk-img-split">
+                  <img src="{{ photo }}" alt="Photo {{ loop.index }}" />
+                </div>
+              </figure>
+            {% endfor %}
+          </div>
+          {% endif %}
+        </div>
+      {% endif %}
+
+      <!-- Layout 3 : texte + fun facts encartés -->
+      {% if day.layout_story_facts %}
+        <div class="mbk-layout mbk-layout-facts">
+          <div class="mbk-text-block">
+            {{ day.body_html | safe }}
+          </div>
+
+          {% if day.fun_facts %}
+            <section class="mbk-facts keep-together">
+              <h3 class="mbk-chip">
+                💡 {% if day.city %}{{ day.city }}{% else %}{{ day.country }}{% endif %} – Fun Facts
+              </h3>
+              <ul class="mbk-facts-list">
+                {% for fact in day.fun_facts %}
+                  <li>{{ fact }}</li>
+                {% endfor %}
+              </ul>
+            </section>
+          {% endif %}
+        </div>
+      {% endif %}
+
+      <!-- Layout 4 : collage / canvas -->
+      {% if day.layout_collage %}
+        <div class="mbk-canvas">
+
+          <!-- bloc texte principal -->
+          <article class="mbk-card-floating mbk-card-text">
+            {{ day.body_html | safe }}
+          </article>
+
+          <!-- fun facts -->
+          {% if day.fun_facts %}
+          <article class="mbk-card-floating mbk-card-facts">
+            <h3 class="mbk-chip">
+              💡 {% if day.city %}{{ day.city }}{% else %}{{ day.country }}{% endif %} – Fun Facts
+            </h3>
+            <ul class="mbk-facts-list">
+              {% for fact in day.fun_facts %}
+                <li>{{ fact }}</li>
+              {% endfor %}
+            </ul>
+          </article>
+          {% endif %}
+
+          <!-- photos (dernière en pleine largeur) -->
+          {% if day.photos %}
+            {% for photo in day.photos %}
+            <figure class="mbk-card-floating mbk-card-photo {% if loop.last and day.photos|length > 1 %}mbk-card-photo-wide{% endif %}">
+              <div class="mbk-img-wrap {% if loop.last and day.photos|length > 1 %}mbk-img-wide{% else %}mbk-img-collage{% endif %}">
+                <img src="{{ photo }}" alt="Photo {{ loop.index }}" />
+              </div>
+            </figure>
+            {% endfor %}
+          {% endif %}
+
+        </div>
+      {% endif %}
+
+      <!-- Moments clés -->
+      {% if day.highlights %}
+        <section class="mbk-highlight keep-together">
+          <h3>Moments clés</h3>
+          <ul>
+            {% for h in day.highlights %}
+              <li>{{ h }}</li>
+            {% endfor %}
+          </ul>
+        </section>
+      {% endif %}
+
+      <!-- Ligne de voyage décorative -->
+      <svg class="mbk-path" viewBox="0 0 1443 150" preserveAspectRatio="none">
+        <path d="M0.414473 78.9794C87.4939 47.3142 227.565 42.7691 287.662 62.3066C362.785 86.7284 516.227 88.6438 581.759 75.2357C647.292 61.8277 641.998 -18.0781 552.16 5.41776C462.323 28.9137 617.12 138.101 758.095 92.491C899.07 46.8813 875.062 125.662 1040.05 125.662C1205.03 125.662 1185.76 73.6032 1442.94 53.2503"
+              stroke="#B86D18"
+              stroke-width="2.42575"
+              stroke-dasharray="9.7 9.7" />
+      </svg>
+    </section>
+
+    <!-- Saut de page entre les jours (mais pas après le dernier) -->
+    {% if not loop.last %}
+      <div class="mbk-page-break"></div>
+    {% endif %}
+  {% endfor %}
+</body>
+</html>
