@@ -333,6 +333,7 @@
     position: relative;
     break-inside: avoid;
     page-break-inside: avoid;
+    aspect-ratio: 4 / 3;
   }
 
   .mbk-img-wrap img {
@@ -345,19 +346,37 @@
 
   /* Tailles spécifiques */
   .mbk-img-hero {
-    height: 45mm;
+    aspect-ratio: 5 / 3;
   }
 
   .mbk-img-split {
-    height: 28mm;
+    aspect-ratio: 4 / 3;
   }
 
   .mbk-img-collage {
-    height: 28mm;
+    aspect-ratio: 4 / 3;
   }
 
   .mbk-img-wide {
-    height: 36mm;
+    aspect-ratio: 16 / 9;
+  }
+
+  .mbk-gallery figure:nth-child(3n + 1) .mbk-img-wrap,
+  .mbk-canvas .mbk-card-photo:nth-child(3n + 1):not(.mbk-card-photo-wide) .mbk-img-wrap {
+    aspect-ratio: 7 / 5;
+    border-radius: 12px;
+  }
+
+  .mbk-gallery figure:nth-child(3n + 2) .mbk-img-wrap,
+  .mbk-canvas .mbk-card-photo:nth-child(3n + 2):not(.mbk-card-photo-wide) .mbk-img-wrap {
+    aspect-ratio: 5 / 4;
+    border-radius: 18px;
+  }
+
+  .mbk-gallery figure:nth-child(3n) .mbk-img-wrap,
+  .mbk-canvas .mbk-card-photo:nth-child(3n):not(.mbk-card-photo-wide) .mbk-img-wrap {
+    aspect-ratio: 11 / 8;
+    border-radius: 16px;
   }
 
   /* Hero */
@@ -457,6 +476,8 @@
   .mbk-highlight h3 {
     margin-top: 0;
     margin-bottom: 2mm;
+    font-size: 10pt;
+    font-weight: 700;
   }
 
   /* Footer local */
@@ -556,6 +577,7 @@
 
   .mbk-path path {
     fill: none;
+    stroke-linecap: round;
   }
 
   /* Utilitaires */
