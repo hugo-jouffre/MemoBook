@@ -3,7 +3,6 @@
   body {
     -webkit-font-smoothing: antialiased;
     background: white;
-    
   }
   body, html {
     margin: 0 !important;
@@ -101,7 +100,7 @@
 
   @page {
     size: A5;
-    margin: 0mm; !important   /* marge intérieure propre */
+    margin: 0mm !important; /* marge intérieure propre */
   }
 
   .mbk-book {
@@ -163,10 +162,10 @@
   .mbk-cover-top {
     margin-bottom: 10mm;
     text-align: center;       /* centre le texte */
-  width: 100%;
+    width: 100%;
     text-align: center;
-  margin-left: auto;
-  margin-right: auto;
+    margin-left: auto;
+    margin-right: auto;
     max-width: 70%;
   }
 
@@ -187,8 +186,8 @@
     font-family: "Lusitana", serif;
     font-size: 10pt;
     text-align: center;
-  margin-left: auto;
-  margin-right: auto;
+    margin-left: auto;
+    margin-right: auto;
     max-width: 70%;
   }
 
