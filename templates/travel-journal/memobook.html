@@ -101,12 +101,31 @@
   <!-- ========== PAGES JOUR PAR JOUR ========== -->
   {% for day in days %}
     <section class="mbk-day">
-      <!-- Stickers (0 à 2 max) -->
-      {% if day.sticker_1 %}
-        <img class="mbk-sticker mbk-sticker-1" src="{{ day.sticker_1 }}" alt="Sticker 1" />
-      {% endif %}
-      {% if day.sticker_2 %}
-        <img class="mbk-sticker mbk-sticker-2" src="{{ day.sticker_2 }}" alt="Sticker 2" />
+      {% if day.sticker_groups or day.sticker_1 or day.sticker_2 %}
+        <div class="mbk-sticker-groups">
+          {% if day.sticker_groups %}
+            {% for group in day.sticker_groups %}
+              <div class="mbk-sticker-group mbk-sticker-group--{{ group.position | default('top-right') }}" style="--mbk-group-rotation: {{ group.rotation | default(0) }}deg;">
+                {% for sticker in group.stickers %}
+                  <span class="mbk-sticker-placeholder mbk-sticker-placeholder--{{ sticker.style | default('stamp') }} {{ loop.cycle('mbk-tilt-left', 'mbk-tilt-right') }}" {% if sticker.accent_color %}style="--mbk-sticker-accent: {{ sticker.accent_color }};"{% endif %}>
+                    {{ sticker.text }}
+                  </span>
+                {% endfor %}
+              </div>
+            {% endfor %}
+          {% endif %}
+
+          {% if day.sticker_1 or day.sticker_2 %}
+            <div class="mbk-sticker-group mbk-sticker-group--top-right">
+              {% if day.sticker_1 %}
+                <img class="mbk-sticker-image" src="{{ day.sticker_1 }}" alt="Sticker 1" />
+              {% endif %}
+              {% if day.sticker_2 %}
+                <img class="mbk-sticker-image" src="{{ day.sticker_2 }}" alt="Sticker 2" />
+              {% endif %}
+            </div>
+          {% endif %}
+        </div>
       {% endif %}
 
       <!-- En-tête de jour -->
@@ -123,6 +142,45 @@
           {% endif %}
         </div>
       </div>
+
+      {% if day.day_intro %}
+        <section class="mbk-day-intro">
+          <div class="mbk-day-intro-left">
+            <div class="mbk-day-pill">
+              <span class="mbk-day-pill-label">Jour</span>
+              <span class="mbk-day-pill-value">{{ day.day_intro.day_number | default(loop.index) }}</span>
+            </div>
+            <div class="mbk-day-intro-texts">
+              {% if day.day_intro.date or day.date %}
+                <p class="mbk-day-intro-date">{{ day.day_intro.date | default(day.date) }}</p>
+              {% endif %}
+              {% if day.day_intro.location or day.city %}
+                <p class="mbk-day-intro-location">{{ day.day_intro.location | default(day.city) }}</p>
+              {% endif %}
+            </div>
+          </div>
+          <div class="mbk-day-intro-right">
+            {% if day.day_intro.weather_icon or day.day_intro.weather_summary or day.day_intro.temperature %}
+              <div class="mbk-weather">
+                {% if day.day_intro.weather_icon %}
+                  <span class="mbk-weather-icon">{{ day.day_intro.weather_icon }}</span>
+                {% endif %}
+                <div>
+                  {% if day.day_intro.weather_summary %}
+                    <p class="mbk-weather-summary">{{ day.day_intro.weather_summary }}</p>
+                  {% endif %}
+                  {% if day.day_intro.temperature %}
+                    <p class="mbk-weather-temp">{{ day.day_intro.temperature }}</p>
+                  {% endif %}
+                </div>
+              </div>
+            {% endif %}
+            {% if day.day_intro.mood %}
+              <p class="mbk-day-intro-mood">{{ day.day_intro.mood }}</p>
+            {% endif %}
+          </div>
+        </section>
+      {% endif %}
 
       <!-- Layout 1 : hero photo en haut + texte dessous -->
       {% if day.layout_hero_top %}
@@ -222,6 +280,30 @@
         </div>
       {% endif %}
 
+      <!-- Layout 5 : full opener pour lancer un jour -->
+      {% if day.layout_story_opener %}
+        <div class="mbk-layout mbk-layout-opener">
+          <article class="mbk-opener-text">
+            {% if day.opener_kicker %}
+              <p class="mbk-opener-kicker">{{ day.opener_kicker }}</p>
+            {% endif %}
+            {{ (day.opener_body_html or day.body_html) | safe }}
+          </article>
+
+          {% if day.opener_photos %}
+            <div class="mbk-opener-photos">
+              {% for photo in day.opener_photos %}
+                <figure class="mbk-opener-photo mbk-opener-photo-{{ loop.index }}">
+                  <div class="mbk-img-wrap mbk-img-opener">
+                    <img src="{{ photo }}" alt="Photo d'ouverture {{ loop.index }}" />
+                  </div>
+                </figure>
+              {% endfor %}
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+
       <!-- Moments clés -->
       {% if day.highlights %}
         <section class="mbk-highlight keep-together">
@@ -248,5 +330,27 @@
       <div class="mbk-page-break"></div>
     {% endif %}
   {% endfor %}
+
+  {% if back_cover %}
+    <div class="mbk-page-break"></div>
+    <section class="mbk-back-cover">
+      <div class="mbk-back-photo"{% if back_cover.image %} style="background-image: url('{{ back_cover.image }}');"{% endif %}>
+        <div class="mbk-back-overlay">
+          <img class="mbk-back-logo" src="{{ back_cover.logo_url | default('https://cdn.prod.website-files.com/68827087b5bebc3702bf1a54/691af5f6d5f78fd098aef055_Logo%20MemoBook%20-%20White.svg') }}" alt="Logo MemoBook" />
+          <div class="mbk-back-content">
+            {% if back_cover.closing_text %}
+              <p class="mbk-back-title">{{ back_cover.closing_text }}</p>
+            {% endif %}
+            {% if back_cover.closing_subtext %}
+              <p class="mbk-back-subtext">{{ back_cover.closing_subtext }}</p>
+            {% endif %}
+            {% if back_cover.cta %}
+              <p class="mbk-back-cta">{{ back_cover.cta }}</p>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </section>
+  {% endif %}
 </body>
 </html>
