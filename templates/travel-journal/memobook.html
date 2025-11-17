@@ -336,18 +336,20 @@
     <section class="mbk-back-cover">
       <div class="mbk-back-photo">
         <img src="{{ back_cover.image }}" alt="Quatrième de couverture" />
-        <img class="mbk-back-logo" src="{{ back_cover.logo_url | default('https://cdn.prod.website-files.com/68827087b5bebc3702bf1a54/691af5f6d5f78fd098aef055_Logo%20MemoBook%20-%20White.svg') }}" alt="Logo MemoBook" />
-      </div>
-      <div class="mbk-back-content">
-        {% if back_cover.closing_text %}
-          <p class="mbk-back-title">{{ back_cover.closing_text }}</p>
-        {% endif %}
-        {% if back_cover.closing_subtext %}
-          <p class="mbk-back-subtext">{{ back_cover.closing_subtext }}</p>
-        {% endif %}
-        {% if back_cover.cta %}
-          <p class="mbk-back-cta">{{ back_cover.cta }}</p>
-        {% endif %}
+        <div class="mbk-back-overlay">
+          <img class="mbk-back-logo" src="{{ back_cover.logo_url | default('https://cdn.prod.website-files.com/68827087b5bebc3702bf1a54/691af5f6d5f78fd098aef055_Logo%20MemoBook%20-%20White.svg') }}" alt="Logo MemoBook" />
+          <div class="mbk-back-content">
+            {% if back_cover.closing_text %}
+              <p class="mbk-back-title">{{ back_cover.closing_text }}</p>
+            {% endif %}
+            {% if back_cover.closing_subtext %}
+              <p class="mbk-back-subtext">{{ back_cover.closing_subtext }}</p>
+            {% endif %}
+            {% if back_cover.cta %}
+              <p class="mbk-back-cta">{{ back_cover.cta }}</p>
+            {% endif %}
+          </div>
+        </div>
       </div>
     </section>
   {% endif %}
