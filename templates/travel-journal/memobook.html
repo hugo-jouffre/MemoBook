@@ -334,8 +334,7 @@
   {% if back_cover %}
     <div class="mbk-page-break"></div>
     <section class="mbk-back-cover">
-      <div class="mbk-back-photo">
-        <img src="{{ back_cover.image }}" alt="Quatrième de couverture" />
+      <div class="mbk-back-photo"{% if back_cover.image %} style="background-image: url('{{ back_cover.image }}');"{% endif %}>
         <div class="mbk-back-overlay">
           <img class="mbk-back-logo" src="{{ back_cover.logo_url | default('https://cdn.prod.website-files.com/68827087b5bebc3702bf1a54/691af5f6d5f78fd098aef055_Logo%20MemoBook%20-%20White.svg') }}" alt="Logo MemoBook" />
           <div class="mbk-back-content">

@@ -797,22 +797,19 @@
     position: relative;
     width: 100%;
     min-height: 100%;
-    display: flex;
-    flex-direction: column;
   }
 
   .mbk-back-photo {
     position: relative;
     width: 100%;
-    flex: 1;
-    min-height: 70%;
-  }
-
-  .mbk-back-photo img {
-    width: 100%;
     height: 100%;
-    object-fit: cover;
+    min-height: 70%;
     display: block;
+    flex: 1;
+    object-fit: cover;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
   }
 
   .mbk-back-overlay {
@@ -828,14 +825,15 @@
   }
 
   .mbk-back-logo {
-    width: 38mm;
+    width: 40mm;
     filter: drop-shadow(0 3px 9px rgba(0, 0, 0, 0.4));
-    align-self: flex-start;
+    align-self: center;
+    margin-top: 0mm;
   }
 
   .mbk-back-content {
     text-align: left;
-    max-width: 60%;
+    max-width: 90%;
   }
 
   .mbk-back-title {
