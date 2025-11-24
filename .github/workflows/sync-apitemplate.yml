@@ -1,0 +1,34 @@
+name: Sync APITemplate template
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'templates/travel-journal/**'
+
+jobs:
+  sync-template:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Update APITemplate template
+        env:
+          APITEMPLATE_API_KEY: ${{ secrets.APITEMPLATE_API_KEY }}
+          APITEMPLATE_TEMPLATE_ID: ${{ secrets.APITEMPLATE_TEMPLATE_ID }}
+        run: |
+          HTML=$(jq -Rs . < templates/travel-journal/index.html)
+          CSS=$(jq -Rs . < templates/travel-journal/style.css)
+
+          PAYLOAD=$(jq -n \
+            --arg template_id "$APITEMPLATE_TEMPLATE_ID" \
+            --argjson body "$HTML" \
+            --argjson css "$CSS" \
+            '{template_id: $template_id, body: $body, css: $css}')
+
+          curl -X POST "https://rest.apitemplate.io/v2/update-template" \
+            -H "Content-Type: application/json" \
+            -H "X-API-KEY: $APITEMPLATE_API_KEY" \
+            -d "$PAYLOAD"
