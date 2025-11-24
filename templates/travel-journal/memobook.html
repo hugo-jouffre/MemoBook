@@ -182,6 +182,80 @@
         </section>
       {% endif %}
 
+      {% if day.layout_storyboard %}
+        <div class="mbk-layout mbk-layout-storyboard">
+          <div class="mbk-storyboard-frame">
+            {% set intro = day.day_intro or {} %}
+            <div class="mbk-storyboard-header">
+              {% if day.city or day.country %}
+                <div class="mbk-storyboard-marker">{{ day.city }}{% if day.country %}, {{ day.country }}{% endif %}</div>
+              {% endif %}
+
+              <div class="mbk-storyboard-dates">
+                {% if intro.day_number or loop.index %}
+                  <span class="mbk-storyboard-pill">Jour {{ intro.day_number | default('%02d' % loop.index) }}</span>
+                {% endif %}
+                {% if intro.date or day.date %}
+                  <span class="mbk-storyboard-chip">{{ intro.date | default(day.date) }}</span>
+                {% endif %}
+              </div>
+
+              {% if intro.weather_summary or intro.temperature or intro.weather_icon %}
+                <div class="mbk-storyboard-weather">
+                  {% if intro.weather_icon %}<span class="mbk-storyboard-weather-icon">{{ intro.weather_icon }}</span>{% endif %}
+                  <div>
+                    {% if intro.weather_summary %}<p class="mbk-storyboard-weather-summary">{{ intro.weather_summary }}</p>{% endif %}
+                    {% if intro.temperature %}<p class="mbk-storyboard-weather-temp">{{ intro.temperature }}</p>{% endif %}
+                  </div>
+                </div>
+              {% endif %}
+            </div>
+
+            <div class="mbk-storyboard-grid">
+              <article class="mbk-storyboard-note">
+                {{ day.body_html | safe }}
+              </article>
+
+              {% if day.storyboard_quote %}
+                <div class="mbk-storyboard-quote">{{ day.storyboard_quote }}</div>
+              {% endif %}
+
+              {% if day.photos %}
+                <div class="mbk-storyboard-photos">
+                  {% for photo in day.photos[:3] %}
+                    <figure class="mbk-storyboard-photo mbk-storyboard-photo-{{ loop.index }}">
+                      <div class="mbk-img-wrap mbk-img-storyboard">
+                        <img src="{{ photo }}" alt="Photo collage {{ loop.index }}" />
+                      </div>
+                    </figure>
+                  {% endfor %}
+                </div>
+              {% endif %}
+
+              {% if day.storyboard_cards %}
+                <div class="mbk-storyboard-cards">
+                  {% for card in day.storyboard_cards %}
+                    <article class="mbk-storyboard-card">
+                      {% if card.icon %}<span class="mbk-storyboard-card-icon">{{ card.icon }}</span>{% endif %}
+                      {% if card.title %}<h4>{{ card.title }}</h4>{% endif %}
+                      {% if card.body %}<p>{{ card.body }}</p>{% endif %}
+                    </article>
+                  {% endfor %}
+                </div>
+              {% endif %}
+
+              {% if day.highlights %}
+                <div class="mbk-storyboard-highlights">
+                  {% for h in day.highlights %}
+                    <div class="mbk-storyboard-highlight">{{ h }}</div>
+                  {% endfor %}
+                </div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      {% endif %}
+
       <!-- Layout 1 : hero photo en haut + texte dessous -->
       {% if day.layout_hero_top %}
         <div class="mbk-layout mbk-layout-hero">

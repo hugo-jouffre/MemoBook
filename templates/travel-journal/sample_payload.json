@@ -33,18 +33,26 @@
         "temperature": "18 °C",
         "mood": "Encore un peu de jet lag, mais le sourire est là !"
       },
-      "layout_story_opener": true,
-      "opener_kicker": "Escale à Manille",
-      "opener_body_html": "<p>Après 8 heures de vol depuis Abu Dhabi, on pose enfin le pied à Bogotá ! La ville s'est dévoilée sous la brume, la fatigue du voyage laisse place à l'excitation d'être, enfin, en Amérique du Sud.</p><p>On passe la nuit dans un petit Airbnb juste en haut d'une ruelle escarpée. Au programme : une balade express pour trouver nos premiers jus de mangue, et surtout le plaisir de regarder les montagnes encercler la ville.</p>",
-      "opener_photos": [
-        "https://cdn.prod.website-files.com/68827087b5bebc3702bf1a54/69170578ce230d727dc3983e_Image%20placeholder%201.png",
-        "https://cdn.prod.website-files.com/68827087b5bebc3702bf1a54/69170578a2165b3c4e2e180a_Image%20placeholder%202.png"
-      ],
+      "layout_storyboard": true,
       "layout_hero_top": false,
       "layout_split_left": false,
       "layout_story_facts": false,
       "layout_collage": false,
+      "layout_story_opener": false,
       "body_html": "<p>Nous arrivons à Bogotá après un long vol de nuit. La première claque, c’est l’altitude : chaque marche semble un petit défi. On dépose les sacs, on se perd volontairement dans les rues colorées de La Candelaria.</p><p>Le soir, on se pose avec une arepa chaude et un café tinto. On réalise que le voyage commence vraiment ici.</p>",
+      "storyboard_quote": "Miiiiiii aaaa mmm?",
+      "storyboard_cards": [
+        {
+          "icon": "🕯️",
+          "title": "Crémations 24/24 - 7/7",
+          "body": "Les crémations à Varanasi sont très impressionnantes. Elles ont lieu jour et nuit sur les ghats, sans discontinuer. Le corps est recouvert de bois et brûle sous les chants."
+        },
+        {
+          "icon": "🍲",
+          "title": "Les couleurs de la cuisine",
+          "body": "Les épices sautent de partout : coriandre, curcuma, cardamome. Nos plats sont arrivés dans de jolies assiettes métalliques."
+        }
+      ],
       "fun_facts": [
         "Bogotá est perchée à 2 640 m d'altitude, ce qui en fait l’une des capitales les plus hautes du monde.",
         "Le café tinto, petit café noir servi partout, est un vrai rituel du quotidien pour les Colombiens."
@@ -55,8 +63,9 @@
         "La sensation d’être vraiment partis"
       ],
       "photos": [
-        "https://cdn.prod.website-files.com/68827087b5bebc3702bf1a54/69170578a2165b3c4e2e180a_Image%20placeholder%202.png",
-        "https://cdn.prod.website-files.com/68827087b5bebc3702bf1a54/69170578ce230d727dc3983e_Image%20placeholder%201.png"
+        "https://cdn.prod.website-files.com/691b159061724d8c7a12037c/69246c86a6ede818cf37f567_Image%20placeholder%201.png",
+        "https://cdn.prod.website-files.com/691b159061724d8c7a12037c/69246c861a361c5b3085d32d_Image%20placeholder%202.png",
+        "https://cdn.prod.website-files.com/691b159061724d8c7a12037c/69246c87b3c358e36112d570_C%26G%20Cover.png"
       ],
       "sticker_groups": [
         {

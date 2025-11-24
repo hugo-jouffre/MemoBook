@@ -118,6 +118,27 @@ components:
                 type: string
               country:
                 type: string
+              day_intro:
+                type: object
+                description: Bloc d'intro (jour, lieu, météo, humeur)
+                properties:
+                  day_number:
+                    type: string
+                  location:
+                    type: string
+                  date:
+                    type: string
+                  weather_icon:
+                    type: string
+                  weather_summary:
+                    type: string
+                  temperature:
+                    type: string
+                  mood:
+                    type: string
+              layout_storyboard:
+                type: boolean
+                description: Nouveau layout inspiré du carnet de la capture (jour/date/météo + collage rotatif)
               layout_hero_top:
                 type: boolean
                 description: Hero photo on top + text below
@@ -133,6 +154,21 @@ components:
               body_html:
                 type: string
                 description: Main HTML narrative for the day (paragraphs, lists, etc.)
+              storyboard_quote:
+                type: string
+                description: Petite bulle manuscrite inclinée à épingler dans le layout storyboard
+              storyboard_cards:
+                type: array
+                description: Cartes adhésives (icône + titre + corps) utilisées par le layout storyboard
+                items:
+                  type: object
+                  properties:
+                    icon:
+                      type: string
+                    title:
+                      type: string
+                    body:
+                      type: string
               fun_facts:
                 type: array
                 description: Fun facts about the place or the day

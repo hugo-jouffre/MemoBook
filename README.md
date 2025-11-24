@@ -8,7 +8,7 @@ réunit l’exemple de template et les schémas utilisés par les agents convers
 
 1. **Conversation vocale** – Les voyageurs discutent avec l’agent MemoBook (GPT). Ils peuvent envoyer du texte, des
    photos ou des messages vocaux.
-2. **Interprétation par GPT** – L’agent applique le schéma `templates/travel-journal/gpt_image_schema.json` pour générer
+2. **Interprétation par GPT** – L’agent applique le schéma `templates/travel-journal/gpt_image_schema.yaml` pour générer
    un JSON propre :
    - les textes sont classés par jour, avec plusieurs types de mises en page possibles ;
    - les médias reçus sont téléchargés vers Webflow via son API (voir ci-dessous) et l’agent remplace les liens temporaires
@@ -28,11 +28,12 @@ réunit l’exemple de template et les schémas utilisés par les agents convers
 
 | Fichier | Rôle |
 | --- | --- |
-| `templates/travel-journal/memobook.html` | Structure HTML compatible APITemplate.io. Elle inclut les 5 layouts jour par jour, un layout d’annonce de journée, les groupes de stickers et la 4ᵉ de couverture. |
-| `templates/travel-journal/memobook.css` | Styles A5 MemoBook : couverture, sections jour, collage, nouveau layout « opener », stickers groupés et 4ᵉ de couverture. |
+| `templates/travel-journal/memobook.html` | Structure HTML compatible APITemplate.io. Elle inclut les 6 layouts jour par jour (storyboard inclus), un layout d’annonce de journée, les groupes de stickers et la 4ᵉ de couverture. |
+| `templates/travel-journal/memobook.css` | Styles A5 MemoBook : couverture, sections jour, collage, layout « opener », layout storyboard, stickers groupés et 4ᵉ de couverture. |
 | `templates/travel-journal/sample_payload.json` | Exemple de payload complet. Il sert à tester rapidement un rendu dans APITemplate.io. |
 | `templates/travel-journal/apitemplate-openapi.yaml` | Documentation OpenAPI des appels `create-pdf`. Utile pour brancher l’automatisation NoCode/Backend. |
-| `templates/travel-journal/gpt_image_schema.json` | Schéma destiné à l’agent GPT. Il décrit comment classer les jours, où uploader les images sur Webflow et comment préparer le JSON final pour APITemplate.io. |
+| `templates/travel-journal/gpt_image_schema.yaml` | Schéma destiné à l’agent GPT. Il décrit comment classer les jours, où uploader les images sur Webflow et comment préparer le JSON final pour APITemplate.io. |
+| `templates/travel-journal/sticker_generation_schema.yaml` | Prompt + schéma pour demander à GPT de sélectionner les meilleures images et générer un prompt de sticker compatible `gpt-image-1`. |
 
 ## Stockage des images envoyées dans le chat
 
@@ -69,6 +70,7 @@ Webflow, prêtes à être réutilisées dans le PDF.
 - **Layout 3** – Récit + encart « Fun facts ».
 - **Layout 4** – Collage créatif façon scrapbook.
 - **Layout 5** – « Story opener » pleine page : annonce de journée, grand bloc texte et deux visuels superposés.
+- **Layout 6** – Storyboard inspiré du mockup fourni : bandeau jour/date/météo, note inclinée et pile de 3 photos rotatives.
 - **Carte d’annonce de journée** – Encadré météo/date/lieu pour introduire chaque jour.
 - **Groupes de stickers** – Tampons, emojis, timbres positionnés librement.
 - **4ᵉ de couverture** – Page finale avec message personnalisé, photo plein cadre et logo MemoBook.
