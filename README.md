@@ -17,7 +17,7 @@ réunit l’exemple de template et les schémas utilisés par les agents convers
 3. **Prévisualisation JSON** – Le JSON généré est d’abord envoyé tel quel à APITemplate.io en tant que données de test. Le
    but est uniquement de vérifier le rendu du template sans publier définitivement le carnet.
 4. **Publication PDF** – Une fois validé, le même JSON est transmis à l’API `create-pdf` d’APITemplate.io. L’API charge le
-   template HTML/CSS (`memobook.html` + `memobook.css`), remplace les variables Jinja/Handlebars par les valeurs reçues
+   template HTML/CSS (`index.html` + `style.css`), remplace les variables Jinja/Handlebars par les valeurs reçues
    puis renvoie le PDF prêt à être envoyé en impression ou partagé aux voyageurs.
 
 > 💡 **Pourquoi un schéma dédié ?** Le schéma JSON sert de “script” détaillé pour l’agent GPT : il lui indique comment
@@ -28,9 +28,9 @@ réunit l’exemple de template et les schémas utilisés par les agents convers
 
 | Fichier | Rôle |
 | --- | --- |
-| `templates/travel-journal/memobook.html` | Structure HTML compatible APITemplate.io. Elle inclut les 6 layouts jour par jour (storyboard inclus), un layout d’annonce de journée, les groupes de stickers et la 4ᵉ de couverture. |
-| `templates/travel-journal/memobook.css` | Styles A5 MemoBook : couverture, sections jour, collage, layout « opener », layout storyboard, stickers groupés et 4ᵉ de couverture. |
-| `templates/travel-journal/sample_payload.json` | Exemple de payload complet. Il sert à tester rapidement un rendu dans APITemplate.io. |
+| `templates/travel-journal/index.html` | Structure HTML compatible APITemplate.io. Elle inclut les 6 layouts jour par jour (storyboard inclus), un layout d’annonce de journée, les groupes de stickers et la 4ᵉ de couverture. |
+| `templates/travel-journal/style.css` | Styles A5 MemoBook : couverture, sections jour, collage, layout « opener », layout storyboard, stickers groupés et 4ᵉ de couverture. |
+| `templates/travel-journal/data.json` | Exemple de payload complet. Il sert à tester rapidement un rendu dans APITemplate.io. |
 | `templates/travel-journal/apitemplate-openapi.yaml` | Documentation OpenAPI des appels `create-pdf`. Utile pour brancher l’automatisation NoCode/Backend. |
 | `templates/travel-journal/gpt_image_schema.yaml` | Schéma destiné à l’agent GPT. Il décrit comment classer les jours, où uploader les images sur Webflow et comment préparer le JSON final pour APITemplate.io. |
 | `templates/travel-journal/sticker_generation_schema.yaml` | Prompt + schéma pour demander à GPT de sélectionner les meilleures images et générer un prompt de sticker compatible `gpt-image-1`. |
@@ -75,8 +75,8 @@ Webflow, prêtes à être réutilisées dans le PDF.
 - **Groupes de stickers** – Tampons, emojis, timbres positionnés librement.
 - **4ᵉ de couverture** – Page finale avec message personnalisé, photo plein cadre et logo MemoBook.
 
-Ouvrez `templates/travel-journal/sample_payload.json` pour voir comment activer chaque combinaison. Copiez ensuite
-`memobook.html` et `memobook.css` dans un template APITemplate.io (moteur Handlebars/Jinja) et collez le JSON dans l’onglet
+Ouvrez `templates/travel-journal/data.json` pour voir comment activer chaque combinaison. Copiez ensuite
+`index.html` et `style.css` dans un template APITemplate.io (moteur Handlebars/Jinja) et collez le JSON dans l’onglet
 « Test Data » pour prévisualiser.
 
 Bon voyage ✈️
