@@ -364,9 +364,12 @@
       {% if day.layout_story_opener %}
         <div class="mbk-layout mbk-layout-opener">
           <article class="mbk-opener-text">
-            {% if day.opener_kicker %}
-              <p class="mbk-opener-kicker">{{ day.opener_kicker }}</p>
-            {% endif %}
+            <div class="mbk-opener-topline">
+              <div class="mbk-opener-label">Jour {{ day.day_intro.day_number | default(loop.index) }}</div>
+              {% if day.opener_kicker %}
+                <p class="mbk-opener-kicker">{{ day.opener_kicker }}</p>
+              {% endif %}
+            </div>
             {{ (day.opener_body_html or day.body_html) | safe }}
           </article>
 
