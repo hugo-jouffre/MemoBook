@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 220">
+  <defs>
+    <filter id="deckle">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="7" />
+      <feDisplacementMap in="SourceGraphic" scale="10" />
+    </filter>
+    <linearGradient id="paperStroke" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#d5c6a3" />
+      <stop offset="100%" stop-color="#cbb58a" />
+    </linearGradient>
+  </defs>
+  <rect x="12" y="12" width="196" height="196" rx="18" ry="18"
+        fill="none" stroke="url(#paperStroke)" stroke-width="12" stroke-linecap="round"
+        filter="url(#deckle)" />
+</svg>

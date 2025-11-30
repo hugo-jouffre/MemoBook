@@ -754,11 +754,34 @@
   }
 
   .mbk-opener-text {
-    background: #ffffff;
-    border-radius: 14px;
-    padding: 6mm;
-    border: 1px solid rgba(0, 0, 0, 0.08);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    position: relative;
+    background: #fffdf7;
+    border-radius: 18px;
+    padding: 10mm 9mm;
+    border: 16px solid transparent;
+    border-image-source: url("./paper-border.svg");
+    border-image-slice: 48 fill;
+    border-image-repeat: round;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+    background-clip: padding-box;
+    isolation: isolate;
+  }
+
+  .mbk-opener-text::after {
+    content: "";
+    position: absolute;
+    inset: 6mm;
+    pointer-events: none;
+    background: repeating-linear-gradient(
+        90deg,
+        rgba(214, 196, 155, 0.12) 0,
+        rgba(214, 196, 155, 0.12) 1px,
+        transparent 1px,
+        transparent 7px
+      );
+    opacity: 0.5;
+    border-radius: 10px;
+    mix-blend-mode: multiply;
   }
 
   .mbk-opener-kicker {
