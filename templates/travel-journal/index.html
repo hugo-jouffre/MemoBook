@@ -55,7 +55,17 @@
 
   <div class="mbk-page-break"></div>
 
-  <section class="mbk-intro-page" aria-label="Introduction"></section>
+  <section class="mbk-intro-page" aria-label="Introduction">
+    <div class="mbk-intro-panel">
+      <div class="mbk-intro-label">
+        <span class="mbk-intro-label-text">Introduction</span>
+      </div>
+
+      <div class="mbk-intro-body">
+        <p>{{ intro_text | default("Ajoutez ici le texte d'introduction de votre carnet de voyage.") }}</p>
+      </div>
+    </div>
+  </section>
 
   <div class="mbk-page-break"></div>
 
