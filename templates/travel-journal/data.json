@@ -7,17 +7,6 @@
   "brand_name": "MemoBook",
   "year": "2025",
   "footer_tagline": "Racontez. Revivez. Partagez.",
-  "global_stats": {
-    "total_days": 21,
-    "countries": 1,
-    "cities": 6,
-    "km_total": 1250,
-    "km_walked": 120,
-    "flights": 2,
-    "trains": 3,
-    "hotels": 8,
-    "drinks": 54
-  },
   "days": [
     {
       "title": "Jour 1 – Arrivée à Bogotá",
