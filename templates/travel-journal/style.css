@@ -144,6 +144,21 @@
     text-align: right;
   }
 
+  .mbk-opening-signoff {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 32px;
+    text-align: center;
+    font-family: "Lusitana", serif;
+    font-size: 10pt;
+    color: #2b2a2a;
+  }
+
+  .mbk-opening-signoff-line {
+    margin: 0;
+  }
+
   .mbk-intro-page {
     padding: 20mm;
   }
