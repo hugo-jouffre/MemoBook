@@ -198,44 +198,6 @@
     margin: 0;
   }
 
-  /* ========== STATS GLOBALES ========== */
-
-  .mbk-stats {
-    padding: 8mm 4mm 2mm 4mm;
-  }
-
-  .mbk-stats-title {
-    font-size: 12pt;
-    margin: 0 0 4mm 0;
-    font-weight: 700;
-  }
-
-  .mbk-stats-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 3mm;
-  }
-
-  .mbk-stat-item {
-    background: #fffdf8;
-    border-radius: 8px;
-    padding: 3mm 2mm;
-    text-align: center;
-    border: 1px solid rgba(0, 0, 0, 0.06);
-  }
-
-  .mbk-stat-value {
-    font-size: 11pt;
-    font-weight: 700;
-  }
-
-  .mbk-stat-label {
-    font-size: 7.5pt;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    opacity: 0.7;
-  }
-
   /* ========== DAY PAGES ========== */
 
   .mbk-day {
