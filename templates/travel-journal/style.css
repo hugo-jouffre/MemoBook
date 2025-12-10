@@ -181,6 +181,7 @@
     max-height: calc(75vh - 15px);
     overflow: auto;
     margin: 25vh 15px 15px;
+    font-size: 12px;
   }
 
   .mbk-intro-label {
