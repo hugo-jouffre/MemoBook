@@ -38,70 +38,7 @@
     </div>
   </section>
 
-  <!-- Stats globales optionnelles -->
-  {% if global_stats %}
-    <section class="mbk-stats">
-      <h2 class="mbk-stats-title">Le voyage en un coup d’œil</h2>
-      <div class="mbk-stats-grid">
-        {% if global_stats.total_days %}
-          <div class="mbk-stat-item">
-            <div class="mbk-stat-value">{{ global_stats.total_days }}</div>
-            <div class="mbk-stat-label">Jours</div>
-          </div>
-        {% endif %}
-        {% if global_stats.countries %}
-          <div class="mbk-stat-item">
-            <div class="mbk-stat-value">{{ global_stats.countries }}</div>
-            <div class="mbk-stat-label">Pays visités</div>
-          </div>
-        {% endif %}
-        {% if global_stats.cities %}
-          <div class="mbk-stat-item">
-            <div class="mbk-stat-value">{{ global_stats.cities }}</div>
-            <div class="mbk-stat-label">Villes</div>
-          </div>
-        {% endif %}
-        {% if global_stats.km_total %}
-          <div class="mbk-stat-item">
-            <div class="mbk-stat-value">{{ global_stats.km_total }}</div>
-            <div class="mbk-stat-label">Kilomètres</div>
-          </div>
-        {% endif %}
-        {% if global_stats.km_walked %}
-          <div class="mbk-stat-item">
-            <div class="mbk-stat-value">{{ global_stats.km_walked }}</div>
-            <div class="mbk-stat-label">Km à pied</div>
-          </div>
-        {% endif %}
-        {% if global_stats.flights %}
-          <div class="mbk-stat-item">
-            <div class="mbk-stat-value">{{ global_stats.flights }}</div>
-            <div class="mbk-stat-label">Vols</div>
-          </div>
-        {% endif %}
-        {% if global_stats.trains %}
-          <div class="mbk-stat-item">
-            <div class="mbk-stat-value">{{ global_stats.trains }}</div>
-            <div class="mbk-stat-label">Trains</div>
-          </div>
-        {% endif %}
-        {% if global_stats.hotels %}
-          <div class="mbk-stat-item">
-            <div class="mbk-stat-value">{{ global_stats.hotels }}</div>
-            <div class="mbk-stat-label">Hébergements</div>
-          </div>
-        {% endif %}
-        {% if global_stats.drinks %}
-          <div class="mbk-stat-item">
-            <div class="mbk-stat-value">{{ global_stats.drinks }}</div>
-            <div class="mbk-stat-label">Boissons</div>
-          </div>
-        {% endif %}
-      </div>
-    </section>
-  {% endif %}
-
-  <!-- Saut de page après la couverture + stats -->
+  <!-- Saut de page après la couverture -->
   <div class="mbk-page-break"></div>
 
   <!-- ========== PAGES JOUR PAR JOUR ========== -->
