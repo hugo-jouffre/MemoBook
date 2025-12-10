@@ -116,6 +116,38 @@
     page-break-before: always;
   }
 
+  /* ========== PAGES D'OUVERTURE ========== */
+
+  .mbk-opening-page,
+  .mbk-intro-page {
+    position: relative;
+    min-height: 100vh;
+    background: #f4ede2;
+  }
+
+  .mbk-opening-text {
+    font-family: "Lusitana", serif;
+    font-size: 16pt;
+    margin: 0;
+  }
+
+  .mbk-opening-text--top {
+    position: absolute;
+    top: 22mm;
+    left: 20mm;
+  }
+
+  .mbk-opening-text--bottom {
+    position: absolute;
+    top: 75%;
+    right: 20mm;
+    text-align: right;
+  }
+
+  .mbk-intro-page {
+    padding: 20mm;
+  }
+
   /* ========== COVER ========== */
 
   .mbk-cover {
