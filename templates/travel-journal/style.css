@@ -162,27 +162,34 @@
   .mbk-intro-page {
     padding: 0;
     overflow: hidden;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
   }
 
   .mbk-intro-panel {
-    position: absolute;
-    top: 100px;
-    left: 30px;
-    right: 30px;
-    bottom: 30px;
+    position: relative;
     background: linear-gradient(135deg, #fffaf5 0%, #f3e6d7 100%);
     border: 1.5px solid #bfae99;
     border-radius: 14px;
     box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18), 0 2px 8px rgba(0, 0, 0, 0.12);
     padding: 36px 32px 32px;
     box-sizing: border-box;
+    width: fit-content;
+    max-width: min(720px, calc(100vw - 30px));
+    min-width: 260px;
+    max-height: calc(75vh - 15px);
     overflow: auto;
+    margin: 25vh 15px 15px;
   }
 
   .mbk-intro-label {
     position: absolute;
     top: 7px;
     left: 7px;
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
     background: #e2d6ff;
     color: #2b2a2a;
     border: 2px solid #1f1f1f;
