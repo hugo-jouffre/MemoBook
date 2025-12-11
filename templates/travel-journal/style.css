@@ -50,6 +50,7 @@
     page-break-inside: avoid;
     orphans: 3;
     widows: 3;
+    font-size: 12px;
     text-wrap: pretty; /* évite les mots orphelins autant que possible */
   }
 
