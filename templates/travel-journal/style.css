@@ -118,10 +118,15 @@
 
   /* ========== PAGES D'OUVERTURE ========== */
 
+  .mbk-cover,
   .mbk-opening-page,
-  .mbk-intro-page {
+  .mbk-intro-page,
+  .mbk-day {
     position: relative;
-    min-height: 100vh;
+    width: 148mm;           /* Format A5 – largeur */
+    min-height: 210mm;      /* Format A5 – hauteur minimale */
+    height: 210mm;
+    margin: 0 auto;         /* Centre chaque page sur l'écran/à l'impression */
     background: #f4ede2;
   }
 
@@ -220,11 +225,8 @@
   /* ========== COVER ========== */
 
   .mbk-cover {
-    position: relative;
-    width: 100%;
-    min-height: 100%;
     overflow: hidden;
-    margin: 0;
+    margin: 0 auto;
     padding: 0;
   }
 
@@ -302,10 +304,8 @@
   /* ========== DAY PAGES ========== */
 
   .mbk-day {
-    position: relative;
     padding: 12mm 8mm 14mm 8mm;
     overflow: visible;
-    min-height: 100%;
   }
 
   .mbk-day-header {
