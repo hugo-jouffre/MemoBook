@@ -99,12 +99,13 @@
   /* ===== MEMOBOOK – BOOK TEMPLATE (namespacé .mbk-) ===== */
 
   :root {
-    --mbk-page-width: 148mm;
-    --mbk-page-height: 210mm;
+    --mbk-page-width: 222mm;
+    --mbk-page-height: 314.5mm;
   }
 
   @page {
-    size: A5;
+    /* Format explicit : 148 mm x 210 mm (portrait) */
+    size: 222mm 314.5mm;
     margin: 0mm !important; /* marge intérieure propre */
   }
 
@@ -179,7 +180,7 @@
     position: absolute;
     left: 0;
     right: 0;
-    bottom: -75px;
+    bottom: 15px;
     text-align: center;
     font-family: "Lusitana", serif;
     font-size: 13.33px;
@@ -264,7 +265,9 @@
     body {
       width: var(--mbk-page-width);
       min-height: var(--mbk-page-height);
+      height: var(--mbk-page-height);
     }
+
 
     .mbk-book {
       width: var(--mbk-page-width);
