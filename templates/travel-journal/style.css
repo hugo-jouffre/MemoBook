@@ -2,7 +2,8 @@
   body {
     -webkit-font-smoothing: antialiased;
     background: white;
-  	font-family: 'Playfair Display', serif;
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
 
   }
   body, html {
@@ -46,6 +47,7 @@
     page-break-after: avoid;
     page-break-inside: avoid;
     font-family: 'Playfair Display', serif;
+    font-weight: 400;
   }
 
   p {
@@ -55,8 +57,9 @@
     widows: 3;
     font-size: 12pt;
     text-wrap: pretty;/* évite les mots orphelins autant que posble */
-  	line-height: 130%;
+        line-height: 130%;
     letter-spacing: 0.12pt;
+    font-weight: 400;
   }
 
   ul, ol {
