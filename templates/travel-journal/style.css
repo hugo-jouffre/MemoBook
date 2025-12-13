@@ -50,7 +50,7 @@
     page-break-inside: avoid;
     orphans: 3;
     widows: 3;
-    font-size: 12px;
+    font-size: 12pt;
     text-wrap: pretty; /* évite les mots orphelins autant que possible */
   }
 
@@ -112,7 +112,7 @@
   .mbk-book {
     -webkit-font-smoothing: antialiased;
     font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    font-size: 12.67px;
+    font-size: 12pt;
     line-height: 1.6;
     color: #2b2a2a;
     background: #f4ede2;   /* fond = beige partout, pas de bord blanc */
@@ -213,7 +213,7 @@
     max-height: calc(75vh - 15px);
     overflow: auto;
     margin: 25vh 15px 15px;
-    font-size: 12px;
+    font-size: 12pt;
   }
 
   .mbk-intro-label {
@@ -228,7 +228,7 @@
     border: 2px solid #1f1f1f;
     padding: 6px 18px;
     font-family: "Bungee", cursive;
-    font-size: 13.33px;
+    font-size: 12pt;
     letter-spacing: 0.03em;
     text-transform: uppercase;
     clip-path: polygon(0% 0%, 94% 0%, 100% 50%, 94% 100%, 0% 100%);
@@ -239,7 +239,7 @@
   .mbk-intro-body {
     margin-top: 36px;
     font-family: "Lusitana", serif;
-    font-size: 16px;
+    font-size: 12pt;
     line-height: 1.6;
     color: #2b2a2a;
   }
@@ -320,20 +320,20 @@
 
   .mbk-cover-title {
     font-family: "Lusitana", "Times New Roman", serif;
-    font-size: 34.67px;
+    font-size: 40pt;
     line-height: 1.1;
     margin: 0 0 3mm 0;
   }
 
   .mbk-cover-subtitle {
     font-family: "Lusitana", serif;
-    font-size: 14.67px;
+    font-size: 16pt;
     margin: 0;
   }
 
   .mbk-cover-bottom {
     font-family: "Lusitana", serif;
-    font-size: 13.33px;
+    font-size: 12pt;
     text-align: center;
     margin-left: auto;
     margin-right: auto;
@@ -360,14 +360,14 @@
   }
 
   .mbk-day-title {
-    font-size: 18.67px;
+    font-size: 12pt;
     font-weight: 700;
     letter-spacing: -0.02em;
     margin-bottom: 2mm;
   }
 
   .mbk-day-meta {
-    font-size: 10.67px;
+    font-size: 12pt;
     color: #6a5f50;
   }
 
@@ -503,7 +503,7 @@
   }
 
   .mbk-day-pill-label {
-    font-size: 8px;
+    font-size: 10.36pt;
     text-transform: uppercase;
     letter-spacing: 0.2em;
     opacity: 0.7;
@@ -521,14 +521,14 @@
   }
 
   .mbk-day-intro-date {
-    font-size: 10.67px;
+    font-size: 12pt;
     text-transform: uppercase;
     letter-spacing: 0.1em;
     color: #8a7a63;
   }
 
   .mbk-day-intro-location {
-    font-size: 14.67px;
+    font-size: 12pt;
   }
 
   .mbk-day-intro-right {
@@ -548,12 +548,12 @@
   }
 
   .mbk-weather-summary {
-    font-size: 11.33px;
+    font-size: 12pt;
     margin: 0;
   }
 
   .mbk-weather-temp {
-    font-size: 13.33px;
+    font-size: 12pt;
     font-weight: 600;
     margin: 0;
   }
@@ -807,12 +807,12 @@
 
   .mbk-storyboard-card h4 {
     margin: 0 0 1mm 0;
-    font-size: 13.33px;
+    font-size: 12pt;
   }
 
   .mbk-storyboard-card p {
     margin: 0;
-    font-size: 11.47px;
+    font-size: 12pt;
   }
 
   .mbk-storyboard-highlights {
@@ -876,7 +876,7 @@
     margin-bottom: 3mm;
     text-transform: uppercase;
     letter-spacing: 0.18em;
-    font-size: 9.33px;
+    font-size: 12pt;
     color: #b86d18;
   }
 
@@ -1044,13 +1044,13 @@
     padding: 3px 8px;
     font-weight: 600;
     margin-bottom: 3mm;
-    font-size: 11.33px;
+    font-size: 12pt;
   }
 
   .mbk-facts-list {
     margin: 0;
     padding-left: 14px;
-    font-size: 11.33px;
+    font-size: 12pt;
   }
 
   .mbk-facts-list li {
@@ -1064,7 +1064,7 @@
     background: #ffffff;
     border-radius: 8px;
     border: 1px solid #d7c6a8;
-    font-size: 11.33px;
+    font-size: 12pt;
     break-inside: avoid;
     page-break-inside: avoid;
   }
@@ -1072,7 +1072,7 @@
   .mbk-highlight h3 {
     margin-top: 0;
     margin-bottom: 2mm;
-    font-size: 13.33px;
+    font-size: 12pt;
     font-weight: 700;
   }
 
@@ -1083,7 +1083,7 @@
     border-top: 1px solid #c6b69c;
     display: flex;
     justify-content: space-between;
-    font-size: 11.33px;
+    font-size: 12pt;
     color: #615a4f;
   }
 
@@ -1128,7 +1128,7 @@
   }
 
   .mbk-card-facts {
-    font-size: 11.07px;
+    font-size: 12pt;
   }
 
   .mbk-card-photo {
@@ -1237,7 +1237,7 @@
     margin: 0;
     text-transform: uppercase;
     letter-spacing: 0.16em;
-    font-size: 12px;
+    font-size: 12pt;
     opacity: 0.85;
   }
 
