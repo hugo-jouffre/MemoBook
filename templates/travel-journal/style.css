@@ -159,7 +159,7 @@
 
   .mbk-opening-text {
     font-family: "Lusitana", serif;
-    font-size: 21.33px;
+    font-size: 12pt;
     margin: 0;
   }
 
@@ -180,10 +180,10 @@
     position: absolute;
     left: 0;
     right: 0;
-    bottom: 15px;
+    bottom: 20px;
     text-align: center;
     font-family: "Lusitana", serif;
-    font-size: 13.33px;
+    font-size: 12pt;
     color: #2b2a2a;
   }
 
