@@ -1277,7 +1277,7 @@
   }
 
   .text-label2 {
-    font-family: "Lusitana", sans-serif;
+    font-family: "Playfair Display", serif;
   }
 
   .table {
@@ -1418,7 +1418,7 @@
   }
 
   .mbk-opening-text {
-    font-family: "Lusitana", serif;
+    font-family: "Playfair Display", serif;
     font-size: 12pt;
     margin: 0;
   }
@@ -1442,7 +1442,7 @@
     right: 0;
     bottom: 20px;
     text-align: center;
-    font-family: "Lusitana", serif;
+    font-family: "Playfair Display", serif;
     font-size: 12pt;
     color: #2b2a2a;
   }
@@ -1498,7 +1498,7 @@
 
   .mbk-intro-body {
     margin-top: 36px;
-    font-family: "Lusitana", serif;
+    font-family: "Playfair Display", serif;
     font-size: 12pt;
     line-height: 1.6;
     color: #2b2a2a;
@@ -1579,20 +1579,20 @@
   }
 
   .mbk-cover-title {
-    font-family: "Lusitana", "Times New Roman", serif;
+    font-family: "Playfair Display", "Times New Roman", serif;
     font-size: 40pt;
     line-height: 1.1;
     margin: 0 0 3mm 0;
   }
 
   .mbk-cover-subtitle {
-    font-family: "Lusitana", serif;
+    font-family: "Playfair Display", serif;
     font-size: 16pt;
     margin: 0;
   }
 
   .mbk-cover-bottom {
-    font-family: "Lusitana", serif;
+    font-family: "Playfair Display", serif;
     font-size: 12pt;
     text-align: center;
     margin-left: auto;
@@ -2486,7 +2486,7 @@
   .mbk-back-title {
     font-size: 24px;
     margin: 0 0 4mm 0;
-    font-family: "Lusitana", serif;
+    font-family: "Playfair Display", serif;
   }
 
   .mbk-back-subtext {
