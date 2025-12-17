@@ -55,7 +55,7 @@
     page-break-inside: avoid;
     orphans: 3;
     widows: 3;
-    font-size: 20pt;
+    font-size: 16pt;
     text-wrap: pretty;/* évite les mots orphelins autant que posble */
     line-height: 130%;
     letter-spacing: 0.12pt;
@@ -205,37 +205,36 @@
 
   .mbk-intro-panel {
     position: relative;
-    background: linear-gradient(135deg, #fffaf5 0%, #f3e6d7 100%);
-    border: 1.5px solid #bfae99;
-    border-radius: 14px;
+    background: #ffffff;
+    border: 1px solid #000000;
+    border-radius: 4px;
     box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18), 0 2px 8px rgba(0, 0, 0, 0.12);
-    padding: 36px 32px 32px;
+    padding: 36px 20px 32px;
     box-sizing: border-box;
     width: fit-content;
     max-width: min(720px, calc(100vw - 30px));
-    min-width: 260px;
-    max-height: calc(75vh - 15px);
+    min-width: 720px;
+    max-height: 900px;
     overflow: auto;
-    margin: 25vh 15px 15px;
+    margin: 45vh 15px 15px;
     font-size: 16pt;
   }
 
   .mbk-intro-label {
     position: absolute;
-    top: 7px;
-    left: 7px;
+    top: 10px;
+    left: 20px;
     display: inline-flex;
     align-items: center;
     width: fit-content;
-    background: #e2d6ff;
-    color: #2b2a2a;
+    background: #d4d4ec;
+    color: #21170a;
     border: 2px solid #1f1f1f;
-    padding: 6px 18px;
-    font-family: "Bungee", cursive;
+    padding: 8px 36px;
+    font-family: "Fairplay Display", Black;
     font-size: 16pt;
-    letter-spacing: 0.03em;
-    text-transform: uppercase;
-    clip-path: polygon(0% 0%, 94% 0%, 100% 50%, 94% 100%, 0% 100%);
+    letter-spacing: 0.01em;
+    clip-path: polygon(0% 0%, 86% 0%, 100% 50%, 86% 100%, 0% 100%);
     box-shadow: 0 2px 0 #a38eb8;
     z-index: 2;
   }
