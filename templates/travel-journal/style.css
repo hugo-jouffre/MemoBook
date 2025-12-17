@@ -227,15 +227,42 @@
     display: inline-flex;
     align-items: center;
     width: fit-content;
-    background: #d4d4ec;
     color: #21170a;
-    border: 2px solid #1f1f1f;
-    padding: 8px 36px;
+    --mbk-paperclip-size: 22px;
+    --mbk-paperclip-height: 64px;
+    --mbk-paperclip-padding: 48px;
+    padding: 8px 36px 8px var(--mbk-paperclip-padding);
     font-family: "Fairplay Display", Black;
     font-size: 16pt;
     letter-spacing: 0.01em;
-    clip-path: polygon(0% 0%, 86% 0%, 100% 50%, 86% 100%, 0% 100%);
     box-shadow: 0 2px 0 #a38eb8;
+    z-index: 2;
+  }
+
+  .mbk-intro-label::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: #d4d4ec;
+    border: 2px solid #1f1f1f;
+    clip-path: polygon(0% 0%, 86% 0%, 100% 50%, 86% 100%, 0% 100%);
+    z-index: 0;
+  }
+
+  .mbk-intro-label::before {
+    content: "";
+    position: absolute;
+    left: calc((var(--mbk-paperclip-padding) - var(--mbk-paperclip-size)) / 2);
+    bottom: 1px;
+    width: var(--mbk-paperclip-size);
+    height: var(--mbk-paperclip-height);
+    background: url("./assets/paperclip.svg") center center / contain no-repeat;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .mbk-intro-label-text {
+    position: relative;
     z-index: 2;
   }
 
