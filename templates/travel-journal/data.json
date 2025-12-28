@@ -148,6 +148,121 @@
           ]
         }
       ]
+    },
+    {
+      "title": "Jour 4 – Collage souvenirs",
+      "date": "6 janvier 2024",
+      "city": "Guatapé",
+      "country": "Colombie",
+      "day_intro": {
+        "day_number": "04",
+        "location": "Guatapé",
+        "date": "Samedi 6 janvier",
+        "weather_icon": "🌦",
+        "weather_summary": "Soleil & averses",
+        "temperature": "24 °C",
+        "mood": "Toujours émerveillés par les couleurs"
+      },
+      "layout_modern_journal": true,
+      "body_html": "<p>On reprend nos pas dans les ruelles peintes pour saisir encore quelques détails : les zócalos racontent la vie quotidienne.</p><p>Pause café face au lac avant une balade en bateau pour revoir la Piedra del Peñol depuis l'eau.</p>",
+      "fun_facts": [
+        "Les bas-reliefs sont parfois refaits tous les dix ans pour rester éclatants."
+      ],
+      "photos": [
+        "https://cdn.prod.website-files.com/68827087b5bebc3702bf1a54/69170578a2165b3c4e2e180a_Image%20placeholder%202.png",
+        "https://cdn.prod.website-files.com/691b159061724d8c7a12037c/69246c87b3c358e36112d570_C%26G%20Cover.png"
+      ],
+      "photo_captions": [
+        "Détails de zócalos",
+        "Vue sur le lac"
+      ],
+      "sticker_line": ["☕", "🛶", "🎨"]
+    },
+    {
+      "title": "Jour 5 – Chronologie d'une journée",
+      "date": "7 janvier 2024",
+      "city": "Bogotá",
+      "country": "Colombie",
+      "day_intro": {
+        "day_number": "05",
+        "location": "La Candelaria",
+        "date": "Dimanche 7 janvier",
+        "weather_icon": "⛅",
+        "weather_summary": "Éclaircies",
+        "temperature": "20 °C",
+        "mood": "Promenade tranquille"
+      },
+      "layout_timeline": true,
+      "body_html": "<p>Retour dans le centre pour un dimanche doux : marchés, musique de rue et graffitis monumentaux.</p>",
+      "timeline_events": [
+        { "time": "09h00", "title": "Petit-déjeuner", "description": "Arepa et tinto sur la place", "icon": "☕" },
+        { "time": "11h30", "title": "Street art tour", "description": "Murs géants dans la Candelaria", "icon": "🎨" },
+        { "time": "15h00", "title": "Montée douce", "description": "Escaliers colorés et vue sur les toits" },
+        { "time": "18h30", "title": "Coucher de soleil", "description": "Lumière dorée sur les maisons", "icon": "🌇" }
+      ],
+      "photos": [
+        "https://cdn.prod.website-files.com/691b159061724d8c7a12037c/69246c86a6ede818cf37f567_Image%20placeholder%201.png",
+        "https://cdn.prod.website-files.com/691b159061724d8c7a12037c/69246c861a361c5b3085d32d_Image%20placeholder%202.png"
+      ],
+      "photo_captions": [
+        "Street art monumental",
+        "Escalier coloré"
+      ]
+    },
+    {
+      "title": "Jour 6 – Carte postale de montagne",
+      "date": "8 janvier 2024",
+      "city": "Monserrate",
+      "country": "Colombie",
+      "day_intro": {
+        "day_number": "06",
+        "location": "Monserrate",
+        "date": "Lundi 8 janvier",
+        "weather_icon": "🌤",
+        "weather_summary": "Grande luminosité",
+        "temperature": "16 °C",
+        "mood": "Dernière montée"
+      },
+      "layout_postcard": true,
+      "body_html": "<p>On refait la montée au sommet pour profiter d'une lumière plus claire et des brumes qui s'ouvrent sur la ville.</p><p>Photo souvenir façon carte postale, avant de redescendre partager un dernier jus frais.</p>",
+      "highlights": [
+        "Vue panoramique au soleil",
+        "Funiculaire dans la brume"
+      ],
+      "photos": [
+        "https://cdn.prod.website-files.com/68827087b5bebc3702bf1a54/69170578ce230d727dc3983e_Image%20placeholder%201.png"
+      ]
+    },
+    {
+      "title": "Jour 7 – Bento de fin de voyage",
+      "date": "9 janvier 2024",
+      "city": "Bogotá",
+      "country": "Colombie",
+      "day_intro": {
+        "day_number": "07",
+        "location": "Bogotá",
+        "date": "Mardi 9 janvier",
+        "weather_icon": "⛅",
+        "weather_summary": "Ciel changeant",
+        "temperature": "19 °C",
+        "mood": "On trie nos souvenirs"
+      },
+      "layout_bento": true,
+      "body_html": "<p>Dernière journée à Bogotá : on trie les photos, on note ce qu'on veut garder en tête, et on s'offre un café de plus.</p>",
+      "fun_facts": [
+        "Les cafés de spécialité se sont multipliés ici ces dernières années."
+      ],
+      "highlights": [
+        "Marché artisanal",
+        "Café de spécialité",
+        "Balade finale"
+      ],
+      "photos": [
+        "https://cdn.prod.website-files.com/691b159061724d8c7a12037c/69246c86a6ede818cf37f567_Image%20placeholder%201.png"
+      ],
+      "photo_captions": [
+        "Souvenir du marché"
+      ]
     }
   ],
   "back_cover": {
