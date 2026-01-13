@@ -54,6 +54,13 @@ Ce document sert de base de connaissance pour l'agent GPT qui génère le payloa
 - Mélange récit + facts + listes → `layout_bento`.
 - Intro d'étape → `layout_story_opener`.
 
+## Contraintes de longueur (éviter le débordement)
+Respecter ces maximums **par paragraphe** pour garantir que le texte ne dépasse jamais de la page :
+- `intro_text` : **700 caractères max** par paragraphe (2–3 paragraphes max).
+- `body_html` (layout jour) : **420 caractères max** par paragraphe (2–3 paragraphes max).
+- `fun_facts[]` : **140 caractères max** par paragraphe.
+- `highlights[]` : **80 caractères max** par bullet.
+
 ## Exemple minimal par layout
 ```json
 {
