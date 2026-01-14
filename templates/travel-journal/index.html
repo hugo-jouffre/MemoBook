@@ -6,704 +6,129 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bungee" />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400&display=swap" rel="stylesheet">
-  <!-- APITemplate injects the uploaded CSS/JSON automatically; no local links needed. -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet" />
   <title>{{ book_title }}</title>
 </head>
-<body class="mbk-book">
-  <!-- ========== COUVERTURE ========== -->
-  <section class="mbk-cover">
-    <div class="mbk-cover-img">
-      <img src="{{ cover_photo }}" alt="Couverture" />
-    </div>
-
-    <div class="mbk-cover-content">
-      <!-- Haut de page : titre + sous-titre -->
-      <div class="mbk-cover-top">
-        <h1 class="mbk-cover-title">{{ book_title }}</h1>
+<body>
+  <div class="page cover">
+    <div class="margin-global vertical-spaced">
+      <div class="cover-top-content">
+        <h1 class="book-title">{{ book_title }}</h1>
         {% if book_subtitle %}
-          <h2 class="mbk-cover-subtitle">{{ book_subtitle }}</h2>
+          <div class="book-sub-title-div">
+            <h2 class="book-sub-title">{{ book_subtitle }}</h2>
+          </div>
         {% endif %}
       </div>
-
-      <!-- Bas de page : auteurs + dates -->
-      <div class="mbk-cover-bottom">
-        {% if authors %}
-          <p class="mbk-cover-authors">{{ authors }}</p>
-        {% endif %}
-        {% if date_range %}
-          <p class="mbk-cover-dates">{{ date_range }}</p>
+      <div class="cover-bottom-content">
+        {% if authors or date_range %}
+          <h3 class="cover-bottom-text">
+            {% if authors %}{{ authors }}{% endif %}{% if authors and date_range %}<br />{% endif %}{% if date_range %}{{ date_range }}{% endif %}
+          </h3>
         {% endif %}
       </div>
     </div>
-  </section>
-
-  <!-- Saut de page après la couverture -->
-  <div class="mbk-page-break"></div>
-
-  <!-- ========== PAGES D'OUVERTURE ========== -->
-  <section class="mbk-opening-page">
-    <p class="mbk-opening-text mbk-opening-text--top">Tout commence</p>
-    <p class="mbk-opening-text mbk-opening-text--bottom">par une feuille blanche.</p>
-
-    <div class="mbk-opening-signoff">
-      <p class="mbk-opening-signoff-line">MemoBook © {{ year }}</p>
-      <p class="mbk-opening-signoff-line">Récit de {{ authors }}</p>
-      <p class="mbk-opening-signoff-line">par MemoBook – Illustrations par OpenAI</p>
-    </div>
-  </section>
-
-  <div class="mbk-page-break"></div>
-
-  <section class="mbk-intro-page" aria-label="Introduction">
-    <div class="mbk-intro-panel">
-      <div class="mbk-intro-label">
-        <span class="mbk-intro-label-text"><strong>Introduction</strong></span>
-      </div>
-
-      <div class="mbk-intro-body">
-        <p>{{ intro_text | default("C’est difficile à croire, mais on l’a fait. On a tout mis sur pause : le travail, l’école, la routine, les « il faut » et les « on verra plus tard ». On a troqué la maison contre des sacs à dos, et la sécurité du quotidien contre l’inconnu d’un long voyage à six.
-          
-Pendant huit mois, on a sillonné l’Asie du Sud-Est, les yeux grands ouverts, souvent émerveillés, parfois fatigués, mais toujours ensemble. La Thaïlande, le Laos, le Cambodge, le Vietnam, la Malaisie, les Philippines… Chaque pays nous a offert une nouvelle leçon, un nouveau sourire, une nouvelle odeur de marché ou un lever de soleil à couper le souffle.
-          
-On voulait montrer à nos enfants qu’il existe mille façons de vivre, d’apprendre, d’aimer le monde. Et on a appris avec eux. À ralentir. À s’émerveiller. À se débrouiller quand rien ne se passe comme prévu (et croyez-nous, ça arrive souvent 😅).
-          
-Ce carnet, c’est un peu notre mémoire vivante. Nos impressions à chaud, nos galères de bus interminables, nos fous rires, les petites peurs et les grandes émotions. Ce n’est pas un guide parfait du voyage en famille, juste notre histoire — celle d’un rêve devenu réalité, d’une aventure qui nous a transformés.
-          
-Alors si vous lisez ces lignes, installez-vous confortablement. Fermez les yeux un instant et laissez-vous emporter avec nous, entre les temples dorés, les rizières infinies et les plages qui sentent le sel et la liberté 🌴") }}</p>
-      </div>
-    </div>
-  </section>
-
-  <div class="mbk-page-break"></div>
-
-  <!-- ========== PAGES JOUR PAR JOUR ========== -->
-  {% for day in days %}
-    <section class="mbk-day">
-      {% if day.sticker_groups or day.sticker_1 or day.sticker_2 %}
-        <div class="mbk-sticker-groups">
-          {% if day.sticker_groups %}
-            {% for group in day.sticker_groups %}
-              <div class="mbk-sticker-group mbk-sticker-group--{{ group.position | default('top-right') }}" style="--mbk-group-rotation: {{ group.rotation | default(0) }}deg;">
-                {% for sticker in group.stickers %}
-                  <span class="mbk-sticker-placeholder mbk-sticker-placeholder--{{ sticker.style | default('stamp') }} {{ loop.cycle('mbk-tilt-left', 'mbk-tilt-right') }}" {% if sticker.accent_color %}style="--mbk-sticker-accent: {{ sticker.accent_color }};"{% endif %}>
-                    {{ sticker.text }}
-                  </span>
-                {% endfor %}
-              </div>
-            {% endfor %}
-          {% endif %}
-
-          {% if day.sticker_1 or day.sticker_2 %}
-            <div class="mbk-sticker-group mbk-sticker-group--top-right">
-              {% if day.sticker_1 %}
-                <img class="mbk-sticker-image" src="{{ day.sticker_1 }}" alt="Sticker 1" />
-              {% endif %}
-              {% if day.sticker_2 %}
-                <img class="mbk-sticker-image" src="{{ day.sticker_2 }}" alt="Sticker 2" />
-              {% endif %}
-            </div>
-          {% endif %}
-        </div>
-      {% endif %}
-
-      <!-- En-tête de jour -->
-      <div class="mbk-day-header">
-        <h2 class="mbk-day-title">{{ day.title }}</h2>
-        <div class="mbk-day-meta">
-          {% if day.date %}
-            <span class="mbk-day-meta-item">{{ day.date }}</span>
-          {% endif %}
-          {% if day.city %}
-            <span class="mbk-day-meta-item">
-              {{ day.city }}{% if day.country %}, {{ day.country }}{% endif %}
-            </span>
-          {% endif %}
-        </div>
-      </div>
-
-      {% if day.day_intro %}
-        <section class="mbk-day-intro">
-          <div class="mbk-day-intro-left">
-            <div class="mbk-day-pill">
-              <span class="mbk-day-pill-label">Jour</span>
-              <span class="mbk-day-pill-value">{{ day.day_intro.day_number | default(loop.index) }}</span>
-            </div>
-            <div class="mbk-day-intro-texts">
-              {% if day.day_intro.date or day.date %}
-                <p class="mbk-day-intro-date">{{ day.day_intro.date | default(day.date) }}</p>
-              {% endif %}
-              {% if day.day_intro.location or day.city %}
-                <p class="mbk-day-intro-location">{{ day.day_intro.location | default(day.city) }}</p>
-              {% endif %}
-            </div>
-          </div>
-          <div class="mbk-day-intro-right">
-            {% if day.day_intro.weather_icon or day.day_intro.weather_summary or day.day_intro.temperature %}
-              <div class="mbk-weather">
-                {% if day.day_intro.weather_icon %}
-                  <span class="mbk-weather-icon">{{ day.day_intro.weather_icon }}</span>
-                {% endif %}
-                <div>
-                  {% if day.day_intro.weather_summary %}
-                    <p class="mbk-weather-summary">{{ day.day_intro.weather_summary }}</p>
-                  {% endif %}
-                  {% if day.day_intro.temperature %}
-                    <p class="mbk-weather-temp">{{ day.day_intro.temperature }}</p>
-                  {% endif %}
-                </div>
-              </div>
-            {% endif %}
-            {% if day.day_intro.mood %}
-              <p class="mbk-day-intro-mood">{{ day.day_intro.mood }}</p>
-            {% endif %}
-          </div>
-        </section>
-      {% endif %}
-
-      {% if day.layout_storyboard %}
-        <div class="mbk-layout mbk-layout-storyboard">
-          <div class="mbk-storyboard-frame">
-            {% set intro = day.day_intro or {} %}
-            <div class="mbk-storyboard-header">
-              {% if day.city or day.country %}
-                <div class="mbk-storyboard-marker">{{ day.city }}{% if day.country %}, {{ day.country }}{% endif %}</div>
-              {% endif %}
-
-              <div class="mbk-storyboard-dates">
-                {% if intro.day_number or loop.index %}
-                  <span class="mbk-storyboard-pill">Jour {{ intro.day_number | default('%02d' % loop.index) }}</span>
-                {% endif %}
-                {% if intro.date or day.date %}
-                  <span class="mbk-storyboard-chip">{{ intro.date | default(day.date) }}</span>
-                {% endif %}
-              </div>
-
-              {% if intro.weather_summary or intro.temperature or intro.weather_icon %}
-                <div class="mbk-storyboard-weather">
-                  {% if intro.weather_icon %}<span class="mbk-storyboard-weather-icon">{{ intro.weather_icon }}</span>{% endif %}
-                  <div>
-                    {% if intro.weather_summary %}<p class="mbk-storyboard-weather-summary">{{ intro.weather_summary }}</p>{% endif %}
-                    {% if intro.temperature %}<p class="mbk-storyboard-weather-temp">{{ intro.temperature }}</p>{% endif %}
-                  </div>
-                </div>
-              {% endif %}
-            </div>
-
-            <div class="mbk-storyboard-grid">
-              <article class="mbk-storyboard-note">
-                {{ day.body_html | safe }}
-              </article>
-
-              {% if day.storyboard_quote %}
-                <div class="mbk-storyboard-quote">{{ day.storyboard_quote }}</div>
-              {% endif %}
-
-              {% if day.photos %}
-                <div class="mbk-storyboard-photos">
-                  {% for photo in day.photos[:3] %}
-                    <figure class="mbk-storyboard-photo mbk-storyboard-photo-{{ loop.index }}">
-                      <div class="mbk-img-wrap mbk-img-storyboard">
-                        <img src="{{ photo }}" alt="Photo collage {{ loop.index }}" />
-                      </div>
-                    </figure>
-                  {% endfor %}
-                </div>
-              {% endif %}
-
-              {% if day.storyboard_cards %}
-                <div class="mbk-storyboard-cards">
-                  {% for card in day.storyboard_cards %}
-                    <article class="mbk-storyboard-card">
-                      {% if card.icon %}<span class="mbk-storyboard-card-icon">{{ card.icon }}</span>{% endif %}
-                      {% if card.title %}<h4>{{ card.title }}</h4>{% endif %}
-                      {% if card.body %}<p>{{ card.body }}</p>{% endif %}
-                    </article>
-                  {% endfor %}
-                </div>
-              {% endif %}
-
-              {% if day.highlights %}
-                <div class="mbk-storyboard-highlights">
-                  {% for h in day.highlights %}
-                    <div class="mbk-storyboard-highlight">{{ h }}</div>
-                  {% endfor %}
-                </div>
-              {% endif %}
-            </div>
-          </div>
-        </div>
-      {% endif %}
-
-      <!-- Layout 1 : hero photo en haut + texte dessous -->
-      {% if day.layout_hero_top %}
-        <div class="mbk-layout mbk-layout-hero">
-          {% if day.photos and day.photos|length > 0 %}
-            <figure class="mbk-hero mbk-tilt-right">
-              <div class="mbk-img-wrap mbk-img-hero">
-                <img src="{{ day.photos[0] }}" alt="Photo principale" />
-              </div>
-              <span class="mbk-tape mbk-tape-left"></span>
-            </figure>
-          {% endif %}
-
-          <div class="mbk-text-block">
-            {{ day.body_html | safe }}
-          </div>
-        </div>
-      {% endif %}
-
-      <!-- Layout 2 : texte à gauche / mosaïque à droite -->
-      {% if day.layout_split_left %}
-        <div class="mbk-layout mbk-layout-split">
-          <div class="mbk-text-block">
-            {{ day.body_html | safe }}
-          </div>
-
-          {% if day.photos %}
-          <div class="mbk-gallery">
-            {% for photo in day.photos %}
-              <figure class="mbk-card {% if loop.index is odd %}mbk-tilt-left{% else %}mbk-tilt-right{% endif %}">
-                <div class="mbk-img-wrap mbk-img-split">
-                  <img src="{{ photo }}" alt="Photo {{ loop.index }}" />
-                </div>
-              </figure>
-            {% endfor %}
-          </div>
-          {% endif %}
-        </div>
-      {% endif %}
-
-      <!-- Layout 3 : texte + fun facts encartés -->
-      {% if day.layout_story_facts %}
-        <div class="mbk-layout mbk-layout-facts">
-          <div class="mbk-text-block">
-            {{ day.body_html | safe }}
-          </div>
-
-          {% if day.fun_facts %}
-            <section class="mbk-facts keep-together">
-              <h3 class="mbk-chip">
-                💡 {% if day.city %}{{ day.city }}{% else %}{{ day.country }}{% endif %} – Fun Facts
-              </h3>
-              <ul class="mbk-facts-list">
-                {% for fact in day.fun_facts %}
-                  <li>{{ fact }}</li>
-                {% endfor %}
-              </ul>
-            </section>
-          {% endif %}
-        </div>
-      {% endif %}
-
-      <!-- Layout 4 : collage / canvas -->
-      {% if day.layout_collage %}
-        <div class="mbk-canvas">
-
-          <!-- bloc texte principal -->
-          <article class="mbk-card-floating mbk-card-text">
-            {{ day.body_html | safe }}
-          </article>
-
-          <!-- fun facts -->
-          {% if day.fun_facts %}
-          <article class="mbk-card-floating mbk-card-facts">
-            <h3 class="mbk-chip">
-              💡 {% if day.city %}{{ day.city }}{% else %}{{ day.country }}{% endif %} – Fun Facts
-            </h3>
-            <ul class="mbk-facts-list">
-              {% for fact in day.fun_facts %}
-                <li>{{ fact }}</li>
-              {% endfor %}
-            </ul>
-          </article>
-          {% endif %}
-
-          <!-- photos (dernière en pleine largeur) -->
-          {% if day.photos %}
-            {% for photo in day.photos %}
-            <figure class="mbk-card-floating mbk-card-photo {% if loop.last and day.photos|length > 1 %}mbk-card-photo-wide{% endif %}">
-              <div class="mbk-img-wrap {% if loop.last and day.photos|length > 1 %}mbk-img-wide{% else %}mbk-img-collage{% endif %}">
-                <img src="{{ photo }}" alt="Photo {{ loop.index }}" />
-              </div>
-            </figure>
-            {% endfor %}
-          {% endif %}
-
-        </div>
-      {% endif %}
-
-      <!-- Layout 5 : full opener pour lancer un jour -->
-      {% if day.layout_story_opener %}
-        <div class="mbk-layout mbk-layout-opener">
-          <article class="mbk-opener-text">
-              <div class="mbk-opener-topline">
-              <div class="mbk-opener-label">Jour {{ day.day_intro.day_number | default(loop.index) }}</div>
-              {% if day.opener_kicker %}
-                <p class="mbk-opener-kicker">{{ day.opener_kicker }}</p>
-              {% endif %}
-            </div>
-            {{ (day.opener_body_html or day.body_html) | safe }}
-          </article>
-
-          {% if day.opener_photos %}
-            <div class="mbk-opener-photos">
-              {% for photo in day.opener_photos %}
-                <figure class="mbk-opener-photo mbk-opener-photo-{{ loop.index }}">
-                  <div class="mbk-img-wrap mbk-img-opener">
-                    <img src="{{ photo }}" alt="Photo d'ouverture {{ loop.index }}" />
-                  </div>
-                </figure>
-              {% endfor %}
-            </div>
-          {% endif %}
-        </div>
-      {% endif %}
-
-      <!-- Layout 6 : inspiration "single page" Figma avec badge jour / météo / polaroids -->
-      {% if day.layout_modern_journal %}
-        {% set intro = day.day_intro or {} %}
-        <div class="mbk-layout mbk-layout-modern">
-          <div class="mbk-modern-header">
-            <div class="mbk-modern-badge">
-              <span class="mbk-modern-badge-label">Jour</span>
-              <span class="mbk-modern-badge-value">{{ intro.day_number | default('%02d' % loop.index) }}</span>
-            </div>
-            <div class="mbk-modern-meta">
-              {% if intro.location or day.city %}
-                <span class="mbk-modern-chip">{{ intro.location | default(day.city) }}</span>
-              {% endif %}
-              {% if intro.date or day.date %}
-                <span class="mbk-modern-chip">{{ intro.date | default(day.date) }}</span>
-              {% endif %}
-            </div>
-            {% if intro.weather_icon or intro.weather_summary %}
-              <div class="mbk-modern-weather">
-                {% if intro.weather_icon %}<span class="mbk-modern-weather-icon">{{ intro.weather_icon }}</span>{% endif %}
-                <div>
-                  {% if intro.weather_summary %}<p class="mbk-modern-weather-text">{{ intro.weather_summary }}</p>{% endif %}
-                  {% if intro.temperature %}<p class="mbk-modern-weather-temp">{{ intro.temperature }}</p>{% endif %}
-                </div>
-              </div>
-            {% endif %}
-          </div>
-
-          <div class="mbk-modern-body">
-            <article class="mbk-modern-text">
-              <div class="mbk-modern-tape mbk-modern-tape--left"></div>
-              <div class="mbk-modern-tape mbk-modern-tape--right"></div>
-              {{ day.body_html | safe }}
-              {% if day.fun_facts %}
-                <div class="mbk-modern-fact">
-                  <div class="mbk-modern-fact-label">Fun fact</div>
-                  <p class="mbk-modern-fact-text">{{ day.fun_facts[0] }}</p>
-                </div>
-              {% endif %}
-            </article>
-
-            {% if day.photos %}
-              <div class="mbk-modern-gallery">
-                {% for photo in day.photos[:4] %}
-                  <figure class="mbk-modern-polaroid mbk-modern-polaroid-{{ loop.index }}">
-                    <div class="mbk-img-wrap">
-                      <img src="{{ photo }}" alt="Photo {{ loop.index }}" />
-                    </div>
-                    <figcaption class="mbk-modern-polaroid-caption">
-                      {% if day.photo_captions and day.photo_captions[loop.index0] %}
-                        {{ day.photo_captions[loop.index0] }}
-                      {% else %}
-                        Souvenir {{ loop.index }}
-                      {% endif %}
-                    </figcaption>
-                  </figure>
-                {% endfor %}
-              </div>
-            {% endif %}
-          </div>
-
-          {% if day.sticker_line %}
-            <div class="mbk-modern-stickers">
-              {% for sticker in day.sticker_line %}
-                <span class="mbk-modern-sticker">{{ sticker }}</span>
-              {% endfor %}
-            </div>
-          {% endif %}
-        </div>
-      {% endif %}
-
-      <!-- Layout 7 : carte postale avec photo de fond + texte manuscrit -->
-      {% if day.layout_postcard %}
-        <div class="mbk-layout mbk-layout-postcard">
-          <div class="mbk-postcard-shell">
-            <div class="mbk-postcard-photo"{% if day.photos and day.photos[0] %} style="background-image: url('{{ day.photos[0] }}');"{% endif %}></div>
-            <div class="mbk-postcard-overlay">
-              <div class="mbk-postcard-header">
-                <div>
-                  <p class="mbk-postcard-city">{{ day.city }}{% if day.country %}, {{ day.country }}{% endif %}</p>
-                  {% if day.date %}<p class="mbk-postcard-date">{{ day.date }}</p>{% endif %}
-                </div>
-                {% if day.day_intro and day.day_intro.weather_icon %}
-                  <div class="mbk-postcard-stamp">
-                    <span class="mbk-postcard-stamp-icon">{{ day.day_intro.weather_icon }}</span>
-                    <span class="mbk-postcard-stamp-text">Météo</span>
-                  </div>
-                {% endif %}
-              </div>
-              <div class="mbk-postcard-body">
-                <div class="mbk-postcard-message">
-                  {{ day.body_html | safe }}
-                </div>
-                <div class="mbk-postcard-side">
-                  {% if day.fun_facts and day.fun_facts[0] %}
-                    <div class="mbk-postcard-fact">
-                      <h4>À retenir</h4>
-                      <p>{{ day.fun_facts[0] }}</p>
-                    </div>
-                  {% endif %}
-                  {% if day.highlights %}
-                    <ul class="mbk-postcard-highlights">
-                      {% for h in day.highlights[:3] %}
-                        <li>{{ h }}</li>
-                      {% endfor %}
-                    </ul>
-                  {% endif %}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      {% endif %}
-
-      <!-- Layout 8 : grille bento (texte + facts + photos) -->
-      {% if day.layout_bento %}
-        <div class="mbk-layout mbk-layout-bento">
-          <div class="mbk-bento-grid">
-            <article class="mbk-bento-card mbk-bento-card--main">
-              <div class="mbk-bento-label">Récit</div>
-              {{ day.body_html | safe }}
-            </article>
-
-            {% if day.photos %}
-              <figure class="mbk-bento-card mbk-bento-photo">
-                <div class="mbk-img-wrap">
-                  <img src="{{ day.photos[0] }}" alt="Photo principale" />
-                </div>
-                {% if day.photo_captions and day.photo_captions[0] %}
-                  <figcaption>{{ day.photo_captions[0] }}</figcaption>
-                {% endif %}
-              </figure>
-            {% endif %}
-
-            {% if day.fun_facts %}
-              <article class="mbk-bento-card mbk-bento-facts">
-                <div class="mbk-bento-label">Fun facts</div>
-                <ul>
-                  {% for fact in day.fun_facts[:3] %}
-                    <li>{{ fact }}</li>
-                  {% endfor %}
-                </ul>
-              </article>
-            {% endif %}
-
-            {% if day.highlights %}
-              <article class="mbk-bento-card mbk-bento-highlights">
-                <div class="mbk-bento-label">Moments forts</div>
-                <ol>
-                  {% for h in day.highlights[:4] %}
-                    <li>{{ h }}</li>
-                  {% endfor %}
-                </ol>
-              </article>
-            {% endif %}
-
-            {% if day.photos and day.photos|length > 1 %}
-              <div class="mbk-bento-photo-stack">
-                {% for photo in day.photos[1:3] %}
-                  <figure class="mbk-bento-photo-small mbk-tilt-left">
-                    <div class="mbk-img-wrap">
-                      <img src="{{ photo }}" alt="Souvenir {{ loop.index }}" />
-                    </div>
-                  </figure>
-                {% endfor %}
-              </div>
-            {% endif %}
-          </div>
-        </div>
-      {% endif %}
-
-      <!-- Layout 9 : timeline verticale (idéal quand la journée suit plusieurs étapes) -->
-      {% if day.layout_timeline %}
-        {% set intro = day.day_intro or {} %}
-        <div class="mbk-layout mbk-layout-timeline">
-          <div class="mbk-timeline-header">
-            <div>
-              <p class="mbk-timeline-kicker">Jour {{ intro.day_number | default('%02d' % loop.index) }}</p>
-              <h3 class="mbk-timeline-title">{{ day.title }}</h3>
-              {% if day.date %}<p class="mbk-timeline-date">{{ day.date }}</p>{% endif %}
-            </div>
-            {% if intro.weather_icon or intro.weather_summary %}
-              <div class="mbk-timeline-weather">
-                {% if intro.weather_icon %}<span>{{ intro.weather_icon }}</span>{% endif %}
-                {% if intro.weather_summary %}<p>{{ intro.weather_summary }}</p>{% endif %}
-              </div>
-            {% endif %}
-          </div>
-
-          <div class="mbk-timeline-body">
-            <div class="mbk-timeline-line"></div>
-            <div class="mbk-timeline-events">
-              {% if day.timeline_events %}
-                {% for event in day.timeline_events %}
-                  <div class="mbk-timeline-event">
-                    <div class="mbk-timeline-dot"></div>
-                    <div class="mbk-timeline-card">
-                      <div class="mbk-timeline-card-top">
-                        {% if event.icon %}<span class="mbk-timeline-icon">{{ event.icon }}</span>{% endif %}
-                        {% if event.time %}<span class="mbk-timeline-time">{{ event.time }}</span>{% endif %}
-                      </div>
-                      <p class="mbk-timeline-text">
-                        {% if event.title %}<strong>{{ event.title }}</strong>{% endif %}
-                        {{ event.description | default(event) }}
-                      </p>
-                    </div>
-                  </div>
-                {% endfor %}
-              {% elif day.highlights %}
-                {% for h in day.highlights %}
-                  <div class="mbk-timeline-event">
-                    <div class="mbk-timeline-dot"></div>
-                    <div class="mbk-timeline-card">
-                      <p class="mbk-timeline-text">{{ h }}</p>
-                    </div>
-                  </div>
-                {% endfor %}
-              {% endif %}
-            </div>
-            {% if day.photos %}
-              <div class="mbk-timeline-photos">
-                {% for photo in day.photos[:3] %}
-                  <figure class="mbk-modern-polaroid mbk-modern-polaroid-{{ loop.index }}">
-                    <div class="mbk-img-wrap">
-                      <img src="{{ photo }}" alt="Photo timeline {{ loop.index }}" />
-                    </div>
-                  </figure>
-                {% endfor %}
-              </div>
-            {% endif %}
-          </div>
-        </div>
-      {% endif %}
-
-      <!-- Layout 10 : pile de polaroids pleine page pour les journées très photo -->
-      {% if day.layout_gallery_stack %}
-        <div class="mbk-layout mbk-layout-stack">
-          <div class="mbk-stack-grid">
-            {% if day.body_html %}
-              <article class="mbk-stack-text">
-                <div class="mbk-stack-label">Notes du jour</div>
-                {{ day.body_html | safe }}
-              </article>
-            {% endif %}
-            {% if day.photos %}
-              {% for photo in day.photos %}
-                <figure class="mbk-stack-polaroid mbk-modern-polaroid mbk-modern-polaroid-{{ loop.index }}">
-                  <div class="mbk-img-wrap">
-                    <img src="{{ photo }}" alt="Polaroid {{ loop.index }}" />
-                  </div>
-                  {% if day.photo_captions and day.photo_captions[loop.index0] %}
-                    <figcaption class="mbk-modern-polaroid-caption">{{ day.photo_captions[loop.index0] }}</figcaption>
-                  {% endif %}
-                </figure>
-              {% endfor %}
-            {% endif %}
-          </div>
-        </div>
-      {% endif %}
-
-      <!-- Moments clés -->
-      {% if day.highlights %}
-        <section class="mbk-highlight keep-together">
-          <h3>Moments clés</h3>
-          <ul>
-            {% for h in day.highlights %}
-              <li>{{ h }}</li>
-            {% endfor %}
-          </ul>
-        </section>
-      {% endif %}
-
-      <!-- Ligne de voyage décorative -->
-      <svg class="mbk-path" viewBox="0 0 1443 150" preserveAspectRatio="none">
-        <path d="M0.414473 78.9794C87.4939 47.3142 227.565 42.7691 287.662 62.3066C362.785 86.7284 516.227 88.6438 581.759 75.2357C647.292 61.8277 641.998 -18.0781 552.16 5.41776C462.323 28.9137 617.12 138.101 758.095 92.491C899.07 46.8813 875.062 125.662 1040.05 125.662C1205.03 125.662 1185.76 73.6032 1442.94 53.2503"
-              stroke="#B86D18"
-              stroke-width="2.42575"
-              stroke-dasharray="9.7 9.7" />
-      </svg>
-    </section>
-
-    <!-- Saut de page entre les jours (mais pas après le dernier) -->
-    {% if not loop.last %}
-      <div class="mbk-page-break"></div>
+    {% if cover_photo %}
+      <img src="{{ cover_photo }}" alt="Couverture" class="cover-img" />
     {% endif %}
-  {% endfor %}
+  </div>
 
-  {% if back_cover %}
-    <div class="mbk-page-break"></div>
-    <section class="mbk-back-cover">
-      <div class="mbk-back-photo"{% if back_cover.image %} style="background-image: url('{{ back_cover.image }}');"{% endif %}>
-        <div class="mbk-back-overlay">
-          <img class="mbk-back-logo" src="{{ back_cover.logo_url | default('https://cdn.prod.website-files.com/68827087b5bebc3702bf1a54/691af5f6d5f78fd098aef055_Logo%20MemoBook%20-%20White.svg') }}" alt="Logo MemoBook" />
-          <div class="mbk-back-content">
-            {% if back_cover.closing_text %}
-              <p class="mbk-back-title">{{ back_cover.closing_text }}</p>
-            {% endif %}
-            {% if back_cover.closing_subtext %}
-              <p class="mbk-back-subtext">{{ back_cover.closing_subtext }}</p>
-            {% endif %}
-            {% if back_cover.cta %}
-              <p class="mbk-back-cta">{{ back_cover.cta }}</p>
-            {% endif %}
+  <div class="page">
+    <div class="margin-global vertical-spaced">
+      <div class="feuille-blanche-div">
+        <div class="feuille-blanche-top">Tout commence...</div>
+        <div class="feuille-blanche-bottom">...par une feuille blanche.</div>
+      </div>
+      <div class="cover-bottom-content">
+        <p class="_2nd-page-bottom-text">
+          {{ brand_name | default('MemoBook') }} © {{ year }}<br />
+          {% if authors %}Récit de {{ authors }}<br />{% endif %}
+          Edition par {{ brand_name | default('MemoBook') }} – Illustrations par OpenAI
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="page">
+    <div class="margin-global">
+      <div class="intro-img-line">
+        {% if intro_photos and intro_photos|length >= 1 %}
+          <div class="intro-img-div">
+            <img src="{{ intro_photos[0] }}" alt="Introduction photo 1" class="intro-img" />
           </div>
+        {% elif days and days|length > 0 and days[0].photos and days[0].photos|length >= 1 %}
+          <div class="intro-img-div">
+            <img src="{{ days[0].photos[0] }}" alt="Introduction photo 1" class="intro-img" />
+          </div>
+        {% endif %}
+
+        {% if intro_photos and intro_photos|length >= 2 %}
+          <div class="intro-img-div _2">
+            <img src="{{ intro_photos[1] }}" alt="Introduction photo 2" class="intro-img _2" />
+          </div>
+        {% elif days and days|length > 0 and days[0].photos and days[0].photos|length >= 2 %}
+          <div class="intro-img-div _2">
+            <img src="{{ days[0].photos[1] }}" alt="Introduction photo 2" class="intro-img _2" />
+          </div>
+        {% endif %}
+      </div>
+
+      <div class="note-item introduction">
+        <img src="https://cdn.prod.website-files.com/68827087b5bebc3702bf1a54/691b0b876b09b90f3fd3c62a_Clipper.png" alt="Clipper" class="clipper" />
+        <div class="note-content">
+          <div class="clipper-box">
+            <h2 class="clipper-day-text">Introduction</h2>
+          </div>
+          <div class="note-text">{{ intro_text }}</div>
         </div>
       </div>
-    </section>
-  {% endif %}
+    </div>
+  </div>
 
-  <script>
-    (function () {
-      const ERROR_IMG_SRC =
-        'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODgiIGhlaWdodD0iODgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgc3Ryb2tlPSIjMDAwIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBvcGFjaXR5PSIuMyIgZmlsbD0ibm9uZSIgc3RyaWtlLXdpZHRoPSIzLjciPjxyZWN0IHg9IjE2IiB5PSIxNiIgd2lkdGg9IjU2IiBoZWlnaHQ9IjU2IiByeD0iNiIvPjxwYXRoIGQ9Im0xNiA1OCAxNi0xOCAzMiAzMiIvPjxjaXJjbGUgY3g9IjUzIiBjeT0iMzUiIHI9IjciLz48L3N2Zz4KCg==';
+  {% for day in days %}
+    <div class="page">
+      <div class="margin-global">
+        <div class="layout2-bottom">
+          <div class="note-item">
+            <img src="https://cdn.prod.website-files.com/68827087b5bebc3702bf1a54/691b0b876b09b90f3fd3c62a_Clipper.png" alt="Clipper" class="clipper" />
+            <div class="note-content">
+              <div class="clipper-box">
+                <h2 class="clipper-day-text">{{ day.title }}</h2>
+              </div>
+              {% if day.day_intro and (day.day_intro.location or day.day_intro.date or day.day_intro.weather_icon or day.day_intro.weather_summary or day.day_intro.temperature) %}
+                <p class="note-meta">
+                  {% if day.day_intro.location %}{{ day.day_intro.location }}{% endif %}
+                  {% if day.day_intro.date %}{% if day.day_intro.location %} • {% endif %}{{ day.day_intro.date }}{% endif %}
+                  {% if day.day_intro.weather_icon or day.day_intro.weather_summary or day.day_intro.temperature %}
+                    <span class="note-weather">
+                      {% if day.day_intro.weather_icon %}{{ day.day_intro.weather_icon }} {% endif %}
+                      {% if day.day_intro.weather_summary %}{{ day.day_intro.weather_summary }}{% endif %}
+                      {% if day.day_intro.temperature %}{% if day.day_intro.weather_summary %} · {% endif %}{{ day.day_intro.temperature }}{% endif %}
+                    </span>
+                  {% endif %}
+                </p>
+              {% endif %}
+              <div class="note-text">{{ day.body_html | safe }}</div>
+            </div>
+          </div>
 
-      const enhance = (img) => {
-        if (!img || img.dataset.mbkFallbackBound === 'true') return;
-        img.dataset.mbkFallbackBound = 'true';
-        const originalSrc = img.getAttribute('src');
-        img.dataset.originalUrl = originalSrc || '';
-        img.addEventListener('error', () => {
-          if (img.dataset.mbkErrored === 'true') return;
-          img.dataset.mbkErrored = 'true';
-          img.setAttribute('data-original-url', originalSrc || '');
-          img.src = ERROR_IMG_SRC;
-          img.classList.add('mbk-img-fallback');
-        });
-      };
+          {% if day.photos and day.photos|length >= 1 %}
+            <div class="img-div">
+              <img src="{{ day.photos[0] }}" alt="Photo du jour" class="intro-img" />
+            </div>
+          {% endif %}
 
-      document.querySelectorAll('img').forEach(enhance);
-
-      const observer = new MutationObserver((mutations) => {
-        mutations.forEach((mutation) => {
-          mutation.addedNodes.forEach((node) => {
-            if (node.tagName === 'IMG') {
-              enhance(node);
-            } else if (node.querySelectorAll) {
-              node.querySelectorAll('img').forEach(enhance);
-            }
-          });
-        });
-      });
-
-      observer.observe(document.body, { childList: true, subtree: true });
-    })();
-  </script>
+          {% if day.fun_facts and day.fun_facts|length >= 1 %}
+            <div class="fun-facts">
+              <div class="fun-fact-title-div">
+                <div class="fun-fact-title">Le saviez-vous ?</div>
+              </div>
+              <p>{{ day.fun_facts[0] }}</p>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  {% endfor %}
 </body>
 </html>
