@@ -5,7 +5,7 @@
     --paper: #f4ede2;
     --ink: #1f1f1f;
     --note: #ffffff;
-    --border: #1f1f1f;
+    --border: #000000;
     --accent: #2b2a2a;
     --page-bg: url("https://cdn.prod.website-files.com/691b159061724d8c7a12037c/695f81b592e0b96302cb23a0_Page%20Background.avif");
     --intro-bg: url("https://cdn.prod.website-files.com/691b159061724d8c7a12037c/695fbc700a1268ca3f0050ef_Intro%20Background.svg");
@@ -148,7 +148,7 @@
 
   .intro-img-line {
     display: flex;
-    gap: 10mm;
+    gap: 8mm;
     align-items: flex-start;
     justify-content: space-between;
     margin-bottom: 14mm;
@@ -160,7 +160,7 @@
     padding: 4mm;
     border: 1px solid var(--border);
     box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
-    border-radius: 10mm;
+    border-radius: 6mm;
     transform: rotate(-1.5deg);
   }
 
@@ -172,19 +172,19 @@
     width: 100%;
     height: auto;
     display: block;
-    border-radius: 8mm;
+    border-radius: 4mm;
     object-fit: cover;
   }
 
   .note-item {
     position: relative;
     display: flex;
-    gap: 10mm;
+    gap: 8mm;
     background: var(--note);
     border: 1px solid var(--border);
     padding: 12mm;
     box-shadow: 0 10px 18px rgba(0, 0, 0, 0.12);
-    border-radius: 8mm;
+    border-radius: 6mm;
   }
 
   .note-item.introduction {
@@ -194,8 +194,8 @@
   .clipper {
     position: absolute;
     top: -7mm;
-    left: 12mm;
-    width: 30mm;
+    left: 10mm;
+    width: 28mm;
     z-index: 2;
   }
 
@@ -242,15 +242,21 @@
   }
 
   .layout2-bottom {
-    display: grid;
-    grid-template-columns: 1.35fr 1fr;
-    grid-template-rows: auto 1fr;
+    display: flex;
+    flex-wrap: wrap;
     gap: 12mm;
-    align-items: start;
+    align-items: flex-start;
   }
 
   .layout2-bottom .note-item {
-    grid-row: 1 / span 2;
+    flex: 1 1 58%;
+    min-width: 55%;
+  }
+
+  .layout2-bottom .img-div,
+  .layout2-bottom .fun-facts {
+    flex: 1 1 35%;
+    min-width: 32%;
   }
 
   .img-div {
@@ -259,7 +265,7 @@
     border: 1px solid var(--border);
     padding: 4mm;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
-    border-radius: 8mm;
+    border-radius: 6mm;
   }
 
   .fun-facts {
@@ -270,7 +276,7 @@
     flex-direction: column;
     gap: 4mm;
     position: relative;
-    border-radius: 8mm;
+    border-radius: 6mm;
   }
 
   .fun-fact-title-div {
@@ -289,14 +295,14 @@
     position: absolute;
     bottom: 10mm;
     left: 10mm;
-    width: 28mm;
+    width: 24mm;
   }
 
   .icon-bottom {
     position: absolute;
     bottom: 8mm;
     right: 10mm;
-    width: 20mm;
+    width: 18mm;
   }
 
   .intro-page::before {
@@ -306,11 +312,15 @@
     background-image: var(--intro-bg);
     background-size: cover;
     background-position: center;
-    opacity: 0.6;
+    opacity: 0.8;
     z-index: 0;
   }
 
   .intro-page .margin-global {
     z-index: 1;
+  }
+
+  .new-paragraph {
+    font-weight: 600;
   }
 </style>
