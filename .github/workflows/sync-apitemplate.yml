@@ -20,6 +20,7 @@ jobs:
           APITEMPLATE_API_KEY: ${{ secrets.APITEMPLATE_API_KEY }}
           APITEMPLATE_TEMPLATE_ID: ${{ secrets.APITEMPLATE_TEMPLATE_ID }}
         run: |
+          set -euo pipefail
           HTML=$(jq -Rs . < templates/travel-journal/index.html)
           CSS=$(jq -Rs . < templates/travel-journal/style.css)
 
@@ -29,7 +30,16 @@ jobs:
             --argjson css "$CSS" \
             '{template_id: $template_id, body: $body, css: $css}')
 
-          curl -X POST "https://rest.apitemplate.io/v2/update-template" \
+          RESPONSE_FILE=$(mktemp)
+          HTTP_STATUS=$(curl --show-error --silent --max-time 30 \
+            -X POST "https://rest.apitemplate.io/v2/update-template" \
             -H "Content-Type: application/json" \
             -H "X-API-KEY: $APITEMPLATE_API_KEY" \
-            -d "$PAYLOAD"
+            -d "$PAYLOAD" \
+            -w "%{http_code}" \
+            -o "$RESPONSE_FILE")
+          echo "APITemplate response (HTTP ${HTTP_STATUS}):"
+          cat "$RESPONSE_FILE"
+          if [ "$HTTP_STATUS" -lt 200 ] || [ "$HTTP_STATUS" -ge 300 ]; then
+            exit 1
+          fi
