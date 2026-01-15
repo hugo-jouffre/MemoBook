@@ -10,127 +10,332 @@
   <title>{{ book_title }}</title>
 </head>
 <body>
-  <div class="page cover">
-    <div class="margin-global vertical-spaced">
-      <div class="cover-top-content">
-        <h1 class="book-title">{{ book_title }}</h1>
-        {% if book_subtitle %}
-          <div class="book-sub-title-div">
-            <h2 class="book-sub-title">{{ book_subtitle }}</h2>
+    <div class="page-bg">
+      <img src="https://cdn.prod.website-files.com/691b159061724d8c7a12037c/691b25d2cdc6450f9188302f_Logo%20MemoBook%20-%20Green.avif" loading="lazy" sizes="(max-width: 1927px) 100vw, 1927px" srcset="https://cdn.prod.website-files.com/691b159061724d8c7a12037c/691b25d2cdc6450f9188302f_Logo%20MemoBook%20-%20Green-p-500.png 500w, https://cdn.prod.website-files.com/691b159061724d8c7a12037c/691b25d2cdc6450f9188302f_Logo%20MemoBook%20-%20Green.avif 1927w" alt="MemoBook Logo Vert
+From Smart Audios to Memorable Books" class="logo" />
+      <div class="page cover">
+        <div class="margin-global vertical-spaced">
+          <div class="cover-top-content">
+            <h1 class="book-title">{{ book_title }}</h1>
+            {% if book_subtitle %}
+              <div class="book-sub-title-div">
+                <h2 class="book-sub-title">{{ book_subtitle }}</h2>
+              </div>
+            {% endif %}
           </div>
+          <div class="cover-bottom-content">
+            {% if authors or date_range %}
+              <h3 class="cover-bottom-text">
+                {% if authors %}{{ authors }}{% endif %}{% if authors and date_range %}<br />{% endif %}{% if date_range %}{{ date_range }}{% endif %}
+              </h3>
+            {% endif %}
+          </div>
+        </div>
+        {% if cover_photo %}
+          <img src="{{ cover_photo }}" loading="lazy" alt="" class="cover-img" />
         {% endif %}
       </div>
-      <div class="cover-bottom-content">
-        {% if authors or date_range %}
-          <h3 class="cover-bottom-text">
-            {% if authors %}{{ authors }}{% endif %}{% if authors and date_range %}<br />{% endif %}{% if date_range %}{{ date_range }}{% endif %}
-          </h3>
-        {% endif %}
-      </div>
-    </div>
-    {% if cover_photo %}
-      <img src="{{ cover_photo }}" alt="Couverture" class="cover-img" />
-    {% endif %}
-  </div>
-
-  <div class="page">
-    <div class="margin-global vertical-spaced">
-      <div class="feuille-blanche-div">
-        <div class="feuille-blanche-top">Tout commence...</div>
-        <div class="feuille-blanche-bottom">...par une feuille blanche.</div>
-      </div>
-      <div class="cover-bottom-content">
-        <p class="_2nd-page-bottom-text">
-          {{ brand_name | default('MemoBook') }} © {{ year }}<br />
-          {% if authors %}Récit de {{ authors }}<br />{% endif %}
-          Edition par {{ brand_name | default('MemoBook') }} – Illustrations par OpenAI
-        </p>
-      </div>
-    </div>
-  </div>
-
-  <div class="page intro-page">
-    <div class="margin-global">
-      <div class="intro-img-line">
-        {% if intro_photos and intro_photos|length >= 1 %}
-          <div class="intro-img-div">
-            <img src="{{ intro_photos[0] }}" alt="Introduction photo 1" class="intro-img" />
+      <div class="page">
+        <div class="margin-global vertical-spaced">
+          <div class="feuille-blanche-div">
+            <div class="feuille-blanche-top">Tout commence...</div>
+            <div class="feuille-blanche-bottom">...par une feuille blanche.</div>
           </div>
-        {% elif days and days|length > 0 and days[0].photos and days[0].photos|length >= 1 %}
-          <div class="intro-img-div">
-            <img src="{{ days[0].photos[0] }}" alt="Introduction photo 1" class="intro-img" />
+          <div class="cover-bottom-content">
+            <p class="_2nd-page-bottom-text">
+              {{ brand_name | default('MemoBook') }} © {{ year }}<br />
+              {% if authors %}Récit de {{ authors }}<br />{% endif %}
+              Edition par {{ brand_name | default('MemoBook') }} – Illustrations par OpenAI
+            </p>
           </div>
-        {% endif %}
-
-        {% if intro_photos and intro_photos|length >= 2 %}
-          <div class="intro-img-div _2">
-            <img src="{{ intro_photos[1] }}" alt="Introduction photo 2" class="intro-img _2" />
-          </div>
-        {% elif days and days|length > 0 and days[0].photos and days[0].photos|length >= 2 %}
-          <div class="intro-img-div _2">
-            <img src="{{ days[0].photos[1] }}" alt="Introduction photo 2" class="intro-img _2" />
-          </div>
-        {% endif %}
-      </div>
-
-      <div class="note-item introduction">
-        <img src="https://cdn.prod.website-files.com/691b159061724d8c7a12037c/695fbb8b0a1268ca3f0004e9_Clipper.png" alt="Clipper" class="clipper" />
-        <div class="note-content">
-          <div class="clipper-box">
-            <h2 class="clipper-day-text">Introduction</h2>
-          </div>
-          <div class="note-text">{{ intro_text }}</div>
         </div>
       </div>
-    </div>
-  </div>
-
-  {% for day in days %}
-    <div class="page">
-      <div class="margin-global">
-        <div class="layout2-bottom">
-          <div class="note-item">
-            <img src="https://cdn.prod.website-files.com/691b159061724d8c7a12037c/695fbb8b0a1268ca3f0004e9_Clipper.png" alt="Clipper" class="clipper" />
+      <div class="page">
+        <div class="margin-global">
+          <div class="intro-img-line">
+            <div class="intro-img-div">
+              {% if intro_photos and intro_photos|length>= 1 %}
+                <img src="{{ intro_photos[0] }}" loading="lazy" sizes="(max-width: 643px) 100vw, 643px" alt="" class="intro-img" />
+              {% elif days and days|length> 0 and days[0].photos and days[0].photos|length>= 1 %}
+                <img src="{{ days[0].photos[0] }}" loading="lazy" sizes="(max-width: 643px) 100vw, 643px" alt="" class="intro-img" />
+              {% endif %}
+              <div class="notes-outline">
+                <div>
+                  <svg>
+                    <defs>
+                      <filter id="noise">
+                        <feTurbulence type="fractalNoise" baseFrequency="0.01 0.05" numOctaves="2" seed="1" result="noise"></feTurbulence>
+                        <feDisplacementMap in="SourceGraphic" in2="noise" scale="4" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap>
+                      </filter>
+                    </defs>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div class="intro-img-div _2">
+              {% if intro_photos and intro_photos|length>= 2 %}
+                <img src="{{ intro_photos[1] }}" loading="lazy" alt="" class="intro-img _2" />
+              {% elif days and days|length> 0 and days[0].photos and days[0].photos|length>= 2 %}
+                <img src="{{ days[0].photos[1] }}" loading="lazy" alt="" class="intro-img _2" />
+              {% endif %}
+              <div class="notes-outline">
+                <div>
+                  <svg>
+                    <defs>
+                      <filter id="noise">
+                        <feTurbulence type="fractalNoise" baseFrequency="0.01 0.05" numOctaves="2" seed="1" result="noise"></feTurbulence>
+                        <feDisplacementMap in="SourceGraphic" in2="noise" scale="4" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap>
+                      </filter>
+                    </defs>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="note-item introduction">
+            <img src="https://cdn.prod.website-files.com/691b159061724d8c7a12037c/695fbb8b0a1268ca3f0004e9_Clipper.png" loading="lazy" alt="" class="clipper" />
             <div class="note-content">
               <div class="clipper-box">
-                <h2 class="clipper-day-text">{{ day.title }}</h2>
+                <h2 class="clipper-day-text">Introduction</h2>
+                <div class="note-arrow">
+                  <svg width="100%" height="100%" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1.67569 0.349976H7.43749L19.4468 10.2188L7.43749 20.0876H1.55615L1.67569 0.349976Z" fill="CurrentColor" stroke="black" stroke-width="0.7"></path>
+                    <rect y="0.706299" width="3.33984" height="19.025" fill="CurrentColor"></rect>
+                  </svg>
+                </div>
               </div>
-              {% if day.day_intro and (day.day_intro.location or day.day_intro.date or day.day_intro.weather_icon or day.day_intro.weather_summary or day.day_intro.temperature) %}
-                <p class="note-meta">
-                  {% if day.day_intro.location %}{{ day.day_intro.location }}{% endif %}
-                  {% if day.day_intro.date %}{% if day.day_intro.location %} • {% endif %}{{ day.day_intro.date }}{% endif %}
-                  {% if day.day_intro.weather_icon or day.day_intro.weather_summary or day.day_intro.temperature %}
-                    <span class="note-weather">
-                      {% if day.day_intro.weather_icon %}{{ day.day_intro.weather_icon }} {% endif %}
-                      {% if day.day_intro.weather_summary %}{{ day.day_intro.weather_summary }}{% endif %}
-                      {% if day.day_intro.temperature %}{% if day.day_intro.weather_summary %} · {% endif %}{{ day.day_intro.temperature }}{% endif %}
-                    </span>
-                  {% endif %}
-                </p>
-              {% endif %}
-              <div class="note-text">{{ day.body_html | safe }}</div>
+              <p class="note-text">{{ intro_text | safe }}</p>
+            </div>
+            <div class="notes-outline">
+              <div>
+                <svg>
+                  <defs>
+                    <filter id="noise">
+                      <feTurbulence type="fractalNoise" baseFrequency="0.01 0.05" numOctaves="2" seed="1" result="noise"></feTurbulence>
+                      <feDisplacementMap in="SourceGraphic" in2="noise" scale="4" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap>
+                    </filter>
+                  </defs>
+                </svg>
+              </div>
             </div>
           </div>
-
-          {% if day.photos and day.photos|length >= 1 %}
-            <div class="img-div">
-              <img src="{{ day.photos[0] }}" alt="Photo du jour" class="intro-img" />
+        </div>
+      </div>
+      {% for day in days %}
+        <div class="page">
+          <div class="margin-global">
+            <div class="layout2-bottom">
+              {% if loop.index is odd %}
+                <div class="note-item">
+                  <img src="https://cdn.prod.website-files.com/691b159061724d8c7a12037c/695fbb8b0a1268ca3f0004e9_Clipper.png" loading="lazy" alt="" class="clipper" />
+                  <div class="note-content">
+                    <div class="clipper-box">
+                      <h2 class="clipper-day-text">{{ day.title }}</h2>
+                      <div class="note-arrow">
+                        <svg width="100%" height="100%" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M1.67569 0.349976H7.43749L19.4468 10.2188L7.43749 20.0876H1.55615L1.67569 0.349976Z" fill="CurrentColor" stroke="black" stroke-width="0.7"></path>
+                          <rect y="0.706299" width="3.33984" height="19.025" fill="CurrentColor"></rect>
+                        </svg>
+                      </div>
+                    </div>
+                    <p class="note-text">{{ day.body_html | safe }}</p>
+                  </div>
+                  <div class="notes-outline">
+                    <div>
+                      <svg>
+                        <defs>
+                          <filter id="noise">
+                            <feTurbulence type="fractalNoise" baseFrequency="0.01 0.05" numOctaves="2" seed="1" result="noise"></feTurbulence>
+                            <feDisplacementMap in="SourceGraphic" in2="noise" scale="4" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap>
+                          </filter>
+                        </defs>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+                {% if day.photos and day.photos|length>= 1 %}
+                  <div class="img-div">
+                    <div class="scotch">
+                      <svg width="100%" height="100%" viewBox="0 0 52 16" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <g opacity="0.95" filter="url(#filter0_d_188_1042)">
+                          <path d="M0.837753 0.828605C2.51459 1.44365 35.2712 2.19759 50.1077 2.17348C51.0045 7.99375 49.7992 13.0391 49.0844 14.8342C48.092 15.4053 17.1827 13.7311 1.85207 12.8226C0.431509 9.53305 1.06202 4.08724 0.837753 0.828605Z" fill="white"></path>
+                          <path d="M0.837753 0.828605C2.51459 1.44365 35.2712 2.19759 50.1077 2.17348C51.0045 7.99375 49.7992 13.0391 49.0844 14.8342C48.092 15.4053 17.1827 13.7311 1.85207 12.8226C0.431509 9.53305 1.06202 4.08724 0.837753 0.828605Z" fill="url(#pattern0_188_1042)"></path>
+                          <path d="M0.837753 0.828605C2.51459 1.44365 35.2712 2.19759 50.1077 2.17348C51.0045 7.99375 49.7992 13.0391 49.0844 14.8342C48.092 15.4053 17.1827 13.7311 1.85207 12.8226C0.431509 9.53305 1.06202 4.08724 0.837753 0.828605Z" stroke="black" stroke-width="0.539794"></path>
+                        </g>
+                        <defs>
+                          <filter id="filter0_d_188_1042" x="0.000245214" y="4.96879e-05" width="51.2363" height="15.8679" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                            <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
+                            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"></feColorMatrix>
+                            <feOffset dy="0.107959"></feOffset>
+                            <feGaussianBlur stdDeviation="0.269897"></feGaussianBlur>
+                            <feComposite in2="hardAlpha" operator="out"></feComposite>
+                            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.4 0"></feColorMatrix>
+                            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_188_1042"></feBlend>
+                            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_188_1042" result="shape"></feBlend>
+                          </filter>
+                          <pattern id="pattern0_188_1042" patternUnits="userSpaceOnUse" patternTransform="matrix(-1.0012 23.5081 -10.7455 -0.457643 37.0053 -3.50109)" preserveAspectRatio="none" viewBox="8.533e-05 0 99.0674 45.2834" width="1" height="1">
+                            <use xlink:href="#pattern0_188_1042_inner" transform="translate(0 -45.2834)"></use>
+                            <g id="pattern0_188_1042_inner">
+                              <rect x="81.0909" width="27.5938" height="106.885" transform="rotate(49.3476 81.0909 0)" fill="#F7E5E1"></rect>
+                            </g>
+                          </pattern>
+                        </defs>
+                      </svg>
+                    </div>
+                    <img src="{{ day.photos[0] }}" loading="lazy" alt="" class="intro-img" />
+                    <div class="notes-outline">
+                      <div>
+                        <svg>
+                          <defs>
+                            <filter id="noise">
+                              <feTurbulence type="fractalNoise" baseFrequency="0.01 0.05" numOctaves="2" seed="1" result="noise"></feTurbulence>
+                              <feDisplacementMap in="SourceGraphic" in2="noise" scale="4" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap>
+                            </filter>
+                          </defs>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                {% endif %}
+                {% if day.fun_facts and day.fun_facts|length>= 1 %}
+                  <div class="fun-facts">
+                    <div class="fun-fact-title-div">
+                      <div class="fun-fact-title">Le saviez-vous ?</div>
+                    </div>
+                    <p>{{ day.fun_facts[0] }}</p>
+                    <img src="https://cdn.prod.website-files.com/691b159061724d8c7a12037c/695fd13046d70494f78506d1_Clipper%202.png" loading="lazy" alt="" class="clipper-2" />
+                    <img src="https://cdn.prod.website-files.com/691b159061724d8c7a12037c/695fd1a8d19e9b82453044e2_Plane.png" loading="lazy" alt="" class="icon-bottom" />
+                  </div>
+                {% endif %}
+              {% else %}
+                {% if day.photos and day.photos|length>= 1 %}
+                  <div class="img-div _2">
+                    <div class="scotch">
+                      <svg width="100%" height="100%" viewBox="0 0 52 16" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <g opacity="0.95" filter="url(#filter0_d_188_1042)">
+                          <path d="M0.837753 0.828605C2.51459 1.44365 35.2712 2.19759 50.1077 2.17348C51.0045 7.99375 49.7992 13.0391 49.0844 14.8342C48.092 15.4053 17.1827 13.7311 1.85207 12.8226C0.431509 9.53305 1.06202 4.08724 0.837753 0.828605Z" fill="white"></path>
+                          <path d="M0.837753 0.828605C2.51459 1.44365 35.2712 2.19759 50.1077 2.17348C51.0045 7.99375 49.7992 13.0391 49.0844 14.8342C48.092 15.4053 17.1827 13.7311 1.85207 12.8226C0.431509 9.53305 1.06202 4.08724 0.837753 0.828605Z" fill="url(#pattern0_188_1042)"></path>
+                          <path d="M0.837753 0.828605C2.51459 1.44365 35.2712 2.19759 50.1077 2.17348C51.0045 7.99375 49.7992 13.0391 49.0844 14.8342C48.092 15.4053 17.1827 13.7311 1.85207 12.8226C0.431509 9.53305 1.06202 4.08724 0.837753 0.828605Z" stroke="black" stroke-width="0.539794"></path>
+                        </g>
+                        <defs>
+                          <filter id="filter0_d_188_1042" x="0.000245214" y="4.96879e-05" width="51.2363" height="15.8679" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                            <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
+                            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"></feColorMatrix>
+                            <feOffset dy="0.107959"></feOffset>
+                            <feGaussianBlur stdDeviation="0.269897"></feGaussianBlur>
+                            <feComposite in2="hardAlpha" operator="out"></feComposite>
+                            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.4 0"></feColorMatrix>
+                            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_188_1042"></feBlend>
+                            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_188_1042" result="shape"></feBlend>
+                          </filter>
+                          <pattern id="pattern0_188_1042" patternUnits="userSpaceOnUse" patternTransform="matrix(-1.0012 23.5081 -10.7455 -0.457643 37.0053 -3.50109)" preserveAspectRatio="none" viewBox="8.533e-05 0 99.0674 45.2834" width="1" height="1">
+                            <use xlink:href="#pattern0_188_1042_inner" transform="translate(0 -45.2834)"></use>
+                            <g id="pattern0_188_1042_inner">
+                              <rect x="81.0909" width="27.5938" height="106.885" transform="rotate(49.3476 81.0909 0)" fill="#F7E5E1"></rect>
+                            </g>
+                          </pattern>
+                        </defs>
+                      </svg>
+                    </div>
+                    <img src="{{ day.photos[0] }}" loading="lazy" alt="" class="intro-img _2" />
+                    <div class="notes-outline">
+                      <div>
+                        <svg>
+                          <defs>
+                            <filter id="noise">
+                              <feTurbulence type="fractalNoise" baseFrequency="0.01 0.05" numOctaves="2" seed="1" result="noise"></feTurbulence>
+                              <feDisplacementMap in="SourceGraphic" in2="noise" scale="4" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap>
+                            </filter>
+                          </defs>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                {% endif %}
+                {% if day.fun_facts and day.fun_facts|length>= 1 %}
+                  <div class="fun-facts _2">
+                    <div class="fun-fact-title-div">
+                      <div class="fun-fact-title">Le saviez-vous ?</div>
+                    </div>
+                    <p>{{ day.fun_facts[0] }}</p>
+                    <img src="https://cdn.prod.website-files.com/691b159061724d8c7a12037c/695fd1a8d19e9b82453044e2_Plane.png" loading="lazy" alt="" class="icon-bottom _2" />
+                  </div>
+                {% endif %}
+                <div class="note-item">
+                  <img src="https://cdn.prod.website-files.com/691b159061724d8c7a12037c/695fbb8b0a1268ca3f0004e9_Clipper.png" loading="lazy" alt="" class="clipper" />
+                  <div class="note-content">
+                    <div class="clipper-box">
+                      <h2 class="clipper-day-text">{{ day.title }}</h2>
+                      <div class="note-arrow">
+                        <svg width="100%" height="100%" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M1.67569 0.349976H7.43749L19.4468 10.2188L7.43749 20.0876H1.55615L1.67569 0.349976Z" fill="CurrentColor" stroke="black" stroke-width="0.7"></path>
+                          <rect y="0.706299" width="3.33984" height="19.025" fill="CurrentColor"></rect>
+                        </svg>
+                      </div>
+                    </div>
+                    <p class="note-text">{{ day.body_html | safe }}</p>
+                  </div>
+                  <div class="notes-outline">
+                    <div>
+                      <svg>
+                        <defs>
+                          <filter id="noise">
+                            <feTurbulence type="fractalNoise" baseFrequency="0.01 0.05" numOctaves="2" seed="1" result="noise"></feTurbulence>
+                            <feDisplacementMap in="SourceGraphic" in2="noise" scale="4" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap>
+                          </filter>
+                        </defs>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              {% endif %}
             </div>
-          {% endif %}
+          </div>
+        </div>
+      {% endfor %}
+      <div class="button-group">
+        <a id="html" href="#" class="button">Copy HTML</a>
+        <a id="css" href="#" class="button is-secondary">Copy CSS</a>
+        <div>
+          <script>
+            document.addEventListener('DOMContentLoaded', function () {
+              // Bouton pour copier le HTML
+              document.getElementById('html').addEventListener('click', function () {
+                const htmlContent = document.documentElement.outerHTML;
+                navigator.clipboard.writeText(htmlContent)
+                  .then(() => alert('HTML copié dans le presse-papiers !'))
+                  .catch(err => console.error('Erreur lors de la copie : ', err));
+              });
 
-          {% if day.fun_facts and day.fun_facts|length >= 1 %}
-            <div class="fun-facts">
-              <div class="fun-fact-title-div">
-                <div class="fun-fact-title">Le saviez-vous ?</div>
-              </div>
-              <p>{{ day.fun_facts[0] }}</p>
-              <img src="https://cdn.prod.website-files.com/691b159061724d8c7a12037c/695fd13046d70494f78506d1_Clipper%202.png" alt="Clipper" class="clipper-2" />
-              <img src="https://cdn.prod.website-files.com/691b159061724d8c7a12037c/695fd1a8d19e9b82453044e2_Plane.png" alt="Plane" class="icon-bottom" />
-            </div>
-          {% endif %}
+              // Bouton pour copier le CSS
+              document.getElementById('css').addEventListener('click', function () {
+                let cssContent = '';
+                const styleSheets = document.styleSheets;
+
+                for (let i = 0; i < styleSheets.length; i++) {
+                  try {
+                    const rules = styleSheets[i].cssRules;
+                    for (let j = 0; j < rules.length; j++) {
+                      cssContent += rules[j].cssText + '\n';
+                    }
+                  } catch (e) {
+                    console.warn('Impossible d\'accéder aux règles CSS de : ' + styleSheets[i].href);
+                  }
+                }
+
+                navigator.clipboard.writeText(cssContent)
+                  .then(() => alert('CSS copié dans le presse-papiers !'))
+                  .catch(err => console.error('Erreur lors de la copie : ', err));
+              });
+            });
+          </script>
         </div>
       </div>
     </div>
-  {% endfor %}
-</body>
+    <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=691b159061724d8c7a12037c" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="https://cdn.prod.website-files.com/691b159061724d8c7a12037c/js/webflow.schunk.36b8fb49256177c8.js" type="text/javascript" integrity="sha384-4abIlA5/v7XaW1HMXKBgnUuhnjBYJ/Z9C1OSg4OhmVw9O3QeHJ/qJqFBERCDPv7G" crossorigin="anonymous"></script>
+    <script src="https://cdn.prod.website-files.com/691b159061724d8c7a12037c/js/webflow.schunk.37c43b2607bc230d.js" type="text/javascript" integrity="sha384-vIz55ue+mSNn1fnmtm0OTtZ+3wjCbKaRVL5b9HuGq8Cfk/tX5tH7fmSqsIuiGRgj" crossorigin="anonymous"></script>
+    <script src="https://cdn.prod.website-files.com/691b159061724d8c7a12037c/js/webflow.df2bdac7.bb0fd516309d357e.js" type="text/javascript" integrity="sha384-FNr4jUsbl3tqQ89TSBFppgzd2/9jfrOl8xTWkH/jWUBBuXWAMqwItRaRHjeGU2Zv" crossorigin="anonymous"></script>
+    <a  href="https://webflow.com?utm_campaign=brandjs"><img src="https://d3e54v103j8qbb.cloudfront.net/img/webflow-badge-icon-d2.89e12c322e.svg" alt="" style="margin-right: 4px; width: 26px;" /><img src="https://d3e54v103j8qbb.cloudfront.net/img/webflow-badge-text-d2.c82cec3b78.svg" alt="Made in Webflow" /></a>
+  </body>
 </html>
