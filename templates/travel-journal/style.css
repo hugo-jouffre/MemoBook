@@ -94,18 +94,6 @@ label { margin-bottom: 0.25rem; font-weight: 500; }
 blockquote { border-left: .1875rem solid var(--color-scheme-1--text); margin-bottom: 0px; padding: 0.75rem 1.25rem; font-size: 1.25rem; line-height: 1.5; }
 figure { margin-top: 3rem; margin-bottom: 3rem; }
 figcaption { text-align: center; margin-top: 0.25rem; }
-.button { border: 1px solid var(--_primitives---colors--neutral-darkest); background-color: var(--color-scheme-1--accent); color: var(--_primitives---colors--white); text-align: center; padding: 0.75rem 1.5rem; text-decoration: none; }
-.button:hover { color: var(--color-scheme-1--foreground); }
-.button.is-link { background-color: var(--_primitives---opacity--transparent); color: var(--_primitives---colors--neutral-darkest); border-style: none; padding: 0.25rem 0px; line-height: 1; text-decoration: none; }
-.button.is-link.is-alternate { background-color: var(--_primitives---opacity--transparent); color: var(--_primitives---colors--white); }
-.button.is-link.is-icon { gap: 0.5rem; }
-.button.is-icon { gap: 0.75rem; justify-content: center; align-items: center; display: flex; }
-.button.is-small { padding: 0.5rem 1.25rem; }
-.button.is-alternate { border-color: var(--_primitives---colors--white); background-color: var(--_primitives---colors--white); color: var(--_primitives---colors--neutral-darkest); }
-.button.is-secondary { background-color: var(--_primitives---opacity--transparent); color: var(--_primitives---colors--neutral-darkest); }
-.button.is-secondary.is-alternate { background-color: var(--_primitives---opacity--transparent); color: var(--_primitives---colors--white); }
-.button-group { gap: 1rem; flex-wrap: wrap; align-items: center; display: flex; }
-.button-group.centered { justify-content: center; align-self: center; align-items: center; }
 .page-bg { gap: 2rem; font-family: var(--_books-style---body); --_books-style---titles: Playfairdisplay,"Times New Roman",sans-serif; --_books-style---body: Playfairdisplay,"Times New Roman",sans-serif; --_books-style---primary: #d4d4ec; --_books-style---secondary: #afdcd3; background-color: rgb(197, 186, 175); flex-flow: column; justify-content: flex-start; align-items: center; padding-top: 4rem; padding-bottom: 4rem; font-size: 1.25rem; display: flex; }
 .page { background-color: rgb(246, 238, 230); background-image: url("https://cdn.prod.website-files.com/691b159061724d8c7a12037c/695f81b592e0b96302cb23a0_Page%20Background.avif"); background-repeat: no-repeat; background-size: cover; width: 839px; height: 1189px; box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 8px; }
 .page.cover { position: relative; }
