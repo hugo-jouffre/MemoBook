@@ -1,3 +1,4 @@
+<style>
 .wf-force-outline-none[tabindex="-1"]:focus { outline: none; }
 html { text-size-adjust: 100%; font-family: sans-serif; }
 body { margin: 0px; }
@@ -137,3 +138,4 @@ figcaption { text-align: center; margin-top: 0.25rem; }
 .icon-bottom._2 { top: -154px; bottom: auto; }
 
 * { -webkit-font-smoothing: antialiased; }
+</style>
