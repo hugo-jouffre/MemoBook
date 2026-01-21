@@ -88,7 +88,7 @@
   .layout2-bottom { column-gap: 2rem; flex-flow: wrap; justify-content: space-between; display: flex; }
   .fun-facts { gap: 1rem; background-color: rgb(255, 255, 255); background-image: url("https://cdn.prod.website-files.com/691b159061724d8c7a12037c/695fbe767109f8ff3beb456b_Notes%20Background.png"); background-position: 0px 0px; background-repeat: no-repeat; background-size: cover; border: 3px solid rgb(0, 0, 0); border-radius: 1rem; flex-flow: column; align-self: flex-start; width: 350px; margin-right: 1rem; padding: 1.5rem; display: flex; transform: rotate(5deg); }
   .fun-facts._2 { align-self: flex-end; transform: rotate(-3deg); }
-  .fun-fact-title-div { background-color: #afdcd3; border: 3px solid rgb(0, 0, 0); padding: 0.5rem; }
+  .fun-fact-title-div { background-color: #afdcd3; border: 3px solid rgb(0, 0, 0); padding: 0.5rem; padding-bottom: 0rem; }
   .fun-fact-title { text-align: center; border: 2px dashed rgb(0, 0, 0); padding: 1rem; font-size: 1.5rem; font-weight: 700; }
   .clipper-2 { z-index: 3; width: 70px; position: absolute; inset: -48px 0% auto 43%; }
   .icon-bottom { position: absolute; inset: auto 0% -122px; }
