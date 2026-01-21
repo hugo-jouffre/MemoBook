@@ -212,32 +212,6 @@
                 <img src="https://cdn.prod.website-files.com/691b159061724d8c7a12037c/695fd1a8d19e9b82453044e2_Plane.png" loading="lazy" alt="" class="icon-bottom" />
               </div>
             {% endif %}
-            <div class="note-item">
-              <img src="https://cdn.prod.website-files.com/691b159061724d8c7a12037c/695fbb8b0a1268ca3f0004e9_Clipper.png" loading="lazy" alt="" class="clipper" />
-              <div class="note-content">
-                <div class="clipper-box">
-                  <h2 class="clipper-day-text">{{ day.title }}</h2>
-                  <div class="note-arrow">
-                    <svg width="100%" height="100%" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M1.67569 0.349976H7.43749L19.4468 10.2188L7.43749 20.0876H1.55615L1.67569 0.349976Z" fill="CurrentColor" stroke="black" stroke-width="0.7"></path>
-                      <rect y="0.706299" width="3.33984" height="19.025" fill="CurrentColor"></rect>
-                    </svg>
-                  </div>
-                </div>
-                <p class="note-text">{{ day.body_html | safe }}</p>
-              </div>
-              <div class="notes-outline">
-                <div>
-                  <svg>
-                    <defs>
-                      <filter id="noise">
-                        <feTurbulence type="fractalNoise" baseFrequency="0.01 0.05" numOctaves="2" seed="1" result="noise"></feTurbulence>
-                        <feDisplacementMap in="SourceGraphic" in2="noise" scale="4" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap>
-                      </filter>
-                    </defs>
-                  </svg>
-                </div>
-              </div>
             </div>
           </div>
         </div>
