@@ -22,18 +22,17 @@
     height: 100%;
   }
 
+  html[data-w-dynpage] [data-w-cloak] {
+    color: rgba(0, 0, 0, 0) !important;
+  }
+
   body {
     margin: 0;
     color: #21170a;
-    background-color: #f7efe7;
     min-height: 100%;
     font-family: Playfairdisplay, "Times New Roman", sans-serif;
     font-size: 16px; /* Typographies de tous les paragraphes */
     line-height: 20px;
-  }
-
-  html[data-w-dynpage] [data-w-cloak] {
-    color: rgba(0, 0, 0, 0) !important;
   }
 
   /* Typographies */
