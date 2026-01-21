@@ -1,7 +1,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
-  .wf-force-outline-none[tabindex="-1"]:focus { outline: none; }
   html { text-size-adjust: 100%; font-family: sans-serif; }
   body { margin: 0px; }
   article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary { display: block; }
@@ -13,7 +12,6 @@
   abbr[title] { border-bottom: 1px dotted; }
   b, strong { font-weight: 700; }
   dfn { font-style: italic; }
-  h1 { margin: 0.67em 0px; font-size: 2em; }
   mark { color: rgb(0, 0, 0); background: rgb(255, 255, 0); }
   small { font-size: 80%; }
   sub, sup { vertical-align: baseline; font-size: 75%; line-height: 0; position: relative; }
@@ -53,6 +51,7 @@
   h5 { margin-top: 10px; font-size: 14px; line-height: 20px; }
   h6 { margin-top: 10px; font-size: 12px; line-height: 18px; }
   p { margin-top: 0px; margin-bottom: 10px; }
+
   blockquote { border-left: 5px solid rgb(226, 226, 226); margin: 0px 0px 10px; padding: 10px 20px; font-size: 18px; line-height: 22px; }
   figure { margin: 0px 0px 10px; }
   figcaption { text-align: center; margin-top: 5px; }
