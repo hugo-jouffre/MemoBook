@@ -52,7 +52,7 @@ properties:
                 Authorization:
                   type: string
                   pattern: "^Bearer "
-                  description: "Ex: Bearer 8691729d…fd419 (à stocker côté serveur)"
+                  description: "Ex: Bearer ${WEBFLOW_API_TOKEN} — le token vit côté serveur, jamais dans ce fichier"
                 accept:
                   type: string
                   const: application/json
@@ -86,7 +86,7 @@ properties:
               type: string
         apitemplate_bindings:
           type: array
-          description: Liste des chemins où cette image doit être injectée dans le JSON final (ex: days[0].photos[1])
+          description: "Liste des chemins où cette image doit être injectée dans le JSON final (ex: days[0].photos[1])"
           items:
             type: string
   apitemplate_payload:

@@ -1,8 +1,18 @@
-# MemoBook Generator
+# MemoBook
 
-MemoBook est un générateur de carnets audio-visuels : les voyageurs racontent leur périple à voix haute, l’agent GPT
-transcrit, structure et illustre le récit, puis APITemplate.io assemble automatiquement le PDF prêt à imprimer. Ce dépôt
-réunit l’exemple de template et les schémas utilisés par les agents conversationnels.
+MemoBook est un générateur de carnets audio-visuels : on raconte son périple à voix haute, l’IA transcrit, structure et
+illustre le récit, puis APITemplate.io assemble automatiquement le PDF prêt à imprimer.
+
+Le dépôt est un monorepo :
+
+| Dossier | Rôle |
+| --- | --- |
+| `templates/travel-journal/` | Le template PDF et les schémas qui décrivent le format du carnet. **Source de vérité** : le back-end les lit, il ne les duplique pas. |
+| `backend/` | L'API et le pipeline `transcrire → structurer → imprimer`. Node/TypeScript, Fastify, Postgres. [Documentation](backend/README.md). |
+| `ios/` | L'application iOS native (SwiftUI). [Documentation](ios/README.md). |
+
+Démarrage rapide : `cd backend && docker compose up -d && npm ci && npx prisma migrate dev && npm run dev`, puis
+`cd ios && make project`.
 
 ## Vue d’ensemble du workflow
 
@@ -56,8 +66,8 @@ recommandons Webflow (déjà utilisé pour memo-book.com) :
    ```
 3. Webflow renvoie un `assetId` et surtout `url`/`cdnUrl`. Ces URL publiques sont injectées dans `image_uploads[].webflow_cdn`
    puis référencées dans les champs `days[n].photos`, `days[n].opener_photos`, `back_cover.image`, etc.
-4. Le token communiqué (`8691…fd419`) doit être stocké côté serveur (variable d’environnement) et **jamais** exposé dans le
-   JSON envoyé à APITemplate.io.
+4. Le token Webflow vit côté serveur, dans la variable d’environnement `WEBFLOW_API_TOKEN` (voir `backend/.env.example`).
+   Il ne doit apparaître ni dans ce dépôt, ni dans le JSON envoyé à APITemplate.io.
 
 Grâce à ce flux, toutes les photos partagées dans la conversation GPT sont automatiquement stockées et optimisées sur le CDN
 Webflow, prêtes à être réutilisées dans le PDF.
