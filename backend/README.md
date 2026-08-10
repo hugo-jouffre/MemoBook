@@ -22,7 +22,12 @@ npm run dev                   # API + workers sur http://localhost:3000
 
 **Sans aucune clé d'API**, le back-end démarre quand même : `PIPELINE_MODE=auto` bascule
 sur des implémentations simulées et déterministes de la transcription, de la structuration
-et du rendu. Renseigne `OPENAI_API_KEY` et `APITEMPLATE_API_KEY` pour passer en réel.
+et du rendu, et le stockage des médias passe en mémoire faute de configuration S3. Seule
+`DATABASE_URL` est réellement indispensable.
+
+Renseigne `OPENAI_API_KEY` et `APITEMPLATE_API_KEY` pour passer en réel, et les `S3_*` pour
+que les vocaux survivent à un redémarrage. En production (`NODE_ENV=production`), l'absence
+de configuration S3 empêche le démarrage plutôt que de perdre silencieusement des vocaux.
 
 ```bash
 npm run db:seed               # un carnet de démonstration + un token à utiliser en curl

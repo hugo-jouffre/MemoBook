@@ -21,13 +21,13 @@ public struct RootView: View {
                     Button("Réessayer") {
                         Task { await dependencies.prepare() }
                     }
-                    .tint(MemoBookColor.brand)
+                    .tint(MemoBookColor.action)
                 }
             } else {
                 ProgressView("Préparation…")
             }
         }
-        .tint(MemoBookColor.brand)
+        .tint(MemoBookColor.action)
         .task { await dependencies.prepare() }
     }
 }

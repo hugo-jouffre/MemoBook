@@ -19,7 +19,7 @@ public struct RecordButton: View {
     }
 
     private var tint: Color {
-        isRecording ? MemoBookColor.recording : MemoBookColor.brand
+        isRecording ? MemoBookColor.recording : MemoBookColor.action
     }
 
     public var body: some View {

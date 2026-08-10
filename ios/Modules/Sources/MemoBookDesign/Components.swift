@@ -65,7 +65,7 @@ public struct PrimaryButton: View {
             .frame(maxWidth: .infinity, minHeight: MemoBookSpacing.minimumTapTarget + 6)
         }
         .buttonStyle(.borderedProminent)
-        .tint(MemoBookColor.brand)
+        .tint(MemoBookColor.action)
         .disabled(isLoading)
     }
 }
@@ -92,7 +92,7 @@ public struct ErrorBanner: View {
             if let retry {
                 Button("Réessayer", action: retry)
                     .font(MemoBookFont.caption)
-                    .tint(MemoBookColor.brand)
+                    .tint(MemoBookColor.action)
             }
         }
         .padding(MemoBookSpacing.s)
@@ -116,7 +116,7 @@ public struct EmptyStateView: View {
         VStack(spacing: MemoBookSpacing.xs) {
             Image(systemName: systemImage)
                 .font(.system(size: 34, weight: .light))
-                .foregroundStyle(MemoBookColor.brand)
+                .foregroundStyle(MemoBookColor.action)
             Text(title).font(MemoBookFont.sectionTitle)
             Text(message)
                 .font(MemoBookFont.caption)

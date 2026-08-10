@@ -34,7 +34,7 @@ struct BookStatusCard: View {
                         ShareLink(item: url) {
                             Text("Partager le PDF").font(MemoBookFont.caption)
                         }
-                        .tint(MemoBookColor.brand)
+                        .tint(MemoBookColor.action)
                     }
                     .sheet(isPresented: $isPreviewing) {
                         BookPreviewView(url: url)

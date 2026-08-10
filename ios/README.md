@@ -46,18 +46,37 @@ travailler les écrans et de les tester sans back-end lancé.
 
 ## Design tokens
 
-`MemoBookDesign/Tokens.swift` reprend `memobook-design.md`, **corrigé** selon
-`critique_design_memobook.md` :
+> ### ⚠️ La palette n'est pas encore posée
+>
+> Les couleurs de l'app et des mises en page vont changer prochainement. En attendant,
+> **aucun token de `MemoBookDesign/Tokens.swift` ne porte de couleur de marque** : ils
+> pointent tous vers des couleurs système iOS, et chacun porte un `TODO(design)`.
+>
+> C'est délibéré. L'app est cohérente et utilisable, mais visiblement **non brandée** —
+> impossible de confondre ces valeurs avec le design final, et on ne fige pas une palette
+> qu'on sait déjà fausse.
+>
+> Les deux sources existantes se contredisent et sont toutes deux en sursis :
+> `agents/design.md` fait de Carrot `#F86015` la seule couleur d'accent et exclut Forest
+> Green de l'UI, là où `critique_design_memobook.md` (Drive) recommandait l'inverse. Rien
+> n'a été tranché dans le code.
+>
+> **Le jour venu** : remplacer les valeurs de ce seul fichier, plus l'asset d'accent si
+> besoin. Aucune couleur n'est codée en dur ailleurs dans l'app — c'est ce qui rend la
+> bascule triviale.
 
-- une seule couleur d'action, le vert de marque `#235136` ;
-- l'orange `#D97836` strictement réservé à l'état « enregistrement en cours » — jamais un
-  lien, jamais un CTA ;
+Ce qui est en revanche déjà stable, parce que ça vient des conventions iOS et non d'un
+choix de marque :
+
 - marge horizontale unique de 20 pt, espacements verticaux sur une échelle de 8 pt ;
-- serif uniquement pour les titres de **carnet**, jamais pour le chrome système ;
+- cibles tactiles de 44 pt minimum ;
+- serif pour les titres de **carnet**, jamais pour le chrome système — un carnet ne se lit
+  pas comme une barre de navigation ;
 - SF Symbols en trait fin, pas de rendu 3D.
 
-> ⚠️ Ces valeurs sont provisoires. Elles seront remplacées par l'export Figma une fois les
-> maquettes figées. Ne code aucune couleur en dur ailleurs que dans ce fichier.
+Les typographies sont elles aussi provisoires : le README du dépôt les liste comme « à
+documenter dès qu'elles sont figées en Phase 2/3 ». Tout passe pour l'instant par les
+styles système, ce qui donne Dynamic Type et accessibilité gratuitement.
 
 ## Ce qui n'est pas encore là
 

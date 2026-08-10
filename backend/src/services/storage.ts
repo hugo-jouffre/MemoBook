@@ -108,15 +108,52 @@ export class InMemoryMediaStorage extends MediaStorage {
 export function createMediaStorage(env: Env): MediaStorage {
   if (env.NODE_ENV === "test") return new InMemoryMediaStorage();
 
+  const { S3_ENDPOINT, S3_BUCKET, S3_ACCESS_KEY_ID, S3_SECRET_ACCESS_KEY } = env;
+
+  // La configuration S3 n'est exigée qu'ici, là où elle sert réellement.
+  const missing = Object.entries({
+    S3_ENDPOINT,
+    S3_BUCKET,
+    S3_ACCESS_KEY_ID,
+    S3_SECRET_ACCESS_KEY,
+  })
+    .filter(([, value]) => !value)
+    .map(([name]) => name);
+
+  if (
+    missing.length > 0 ||
+    !S3_ENDPOINT ||
+    !S3_BUCKET ||
+    !S3_ACCESS_KEY_ID ||
+    !S3_SECRET_ACCESS_KEY
+  ) {
+    // En production, un stockage manquant est une panne : les vocaux des
+    // utilisateurs disparaîtraient au premier redémarrage. On refuse de démarrer.
+    if (env.NODE_ENV === "production") {
+      throw new Error(
+        `Stockage des médias non configuré : ${missing.join(", ")} manquant(s).`,
+      );
+    }
+
+    // Ailleurs, on retombe sur la mémoire pour que `npm run dev` et
+    // `npm run smoke` fonctionnent sans rien installer. Les médias ne survivent
+    // pas au redémarrage — d'où l'avertissement.
+    console.warn(
+      `[storage] ${missing.join(", ")} absent(s) : stockage EN MÉMOIRE, ` +
+        "les médias seront perdus au redémarrage. Voir .env.example.",
+    );
+    return new InMemoryMediaStorage();
+  }
+
   const client = new S3Client({
-    endpoint: env.S3_ENDPOINT,
+    endpoint: S3_ENDPOINT,
     region: env.S3_REGION,
     forcePathStyle: env.S3_FORCE_PATH_STYLE,
     credentials: {
-      accessKeyId: env.S3_ACCESS_KEY_ID,
-      secretAccessKey: env.S3_SECRET_ACCESS_KEY,
+      accessKeyId: S3_ACCESS_KEY_ID,
+      secretAccessKey: S3_SECRET_ACCESS_KEY,
     },
   });
 
-  return new MediaStorage(client, env.S3_BUCKET);
+  return new MediaStorage(client, S3_BUCKET);
 }

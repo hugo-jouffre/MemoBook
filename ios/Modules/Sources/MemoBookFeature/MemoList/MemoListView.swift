@@ -30,7 +30,7 @@ public struct MemoListView: View {
                 } label: {
                     Image(systemName: "plus")
                 }
-                .tint(MemoBookColor.brand)
+                .tint(MemoBookColor.action)
                 .accessibilityLabel("Nouveau carnet")
             }
         }

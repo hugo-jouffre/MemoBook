@@ -13,11 +13,16 @@ const schema = z.object({
 
   DATABASE_URL: z.string().min(1),
 
-  S3_ENDPOINT: z.string().url(),
+  // Optionnels ici, vérifiés au moment de construire le client dans
+  // `createMediaStorage`. En test et pendant le smoke, le stockage est en
+  // mémoire : exiger un bucket pour lancer les tests serait une friction
+  // gratuite, et un défaut silencieux masquerait une erreur de configuration
+  // en production.
+  S3_ENDPOINT: z.string().url().optional(),
   S3_REGION: z.string().default("us-east-1"),
-  S3_BUCKET: z.string().min(1),
-  S3_ACCESS_KEY_ID: z.string().min(1),
-  S3_SECRET_ACCESS_KEY: z.string().min(1),
+  S3_BUCKET: z.string().min(1).optional(),
+  S3_ACCESS_KEY_ID: z.string().min(1).optional(),
+  S3_SECRET_ACCESS_KEY: z.string().min(1).optional(),
   S3_FORCE_PATH_STYLE: z
     .enum(["true", "false"])
     .default("true")

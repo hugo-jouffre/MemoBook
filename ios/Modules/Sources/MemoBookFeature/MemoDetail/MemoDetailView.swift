@@ -126,7 +126,7 @@ public struct MemoDetailView: View {
                             height: MemoBookSpacing.minimumTapTarget
                         )
                 }
-                .tint(MemoBookColor.brand)
+                .tint(MemoBookColor.action)
                 .accessibilityLabel("Écrire une note")
 
                 Spacer()
@@ -148,7 +148,7 @@ public struct MemoDetailView: View {
                             height: MemoBookSpacing.minimumTapTarget
                         )
                 }
-                .tint(MemoBookColor.brand)
+                .tint(MemoBookColor.action)
                 .accessibilityLabel("Ajouter une photo")
             }
             .padding(.horizontal, MemoBookSpacing.screenMargin)
@@ -220,7 +220,7 @@ private struct EntryRow: View {
         VStack(alignment: .leading, spacing: MemoBookSpacing.xs / 2) {
             HStack(spacing: MemoBookSpacing.xs) {
                 Image(systemName: icon)
-                    .foregroundStyle(MemoBookColor.brand)
+                    .foregroundStyle(MemoBookColor.action)
                 Text(entry.capturedAt, format: .dateTime.day().month().hour().minute())
                     .font(MemoBookFont.caption)
                     .foregroundStyle(MemoBookColor.inkSecondary)

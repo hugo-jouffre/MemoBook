@@ -38,15 +38,12 @@ jobs:
           --health-retries 10
 
     env:
-      # Aucune clé n'est nécessaire : `PIPELINE_MODE=fake` court-circuite OpenAI
-      # et APITemplate avec des implémentations déterministes.
+      # Aucun secret n'est nécessaire : `PIPELINE_MODE=fake` court-circuite
+      # OpenAI et APITemplate avec des implémentations déterministes, et le
+      # stockage des médias bascule en mémoire faute de configuration S3.
       DATABASE_URL: postgresql://memobook:memobook@localhost:5432/memobook
       PIPELINE_MODE: fake
       NODE_ENV: test
-      S3_ENDPOINT: http://localhost:9000
-      S3_BUCKET: memobook-media
-      S3_ACCESS_KEY_ID: ci
-      S3_SECRET_ACCESS_KEY: ci
 
     steps:
       - uses: actions/checkout@v4
